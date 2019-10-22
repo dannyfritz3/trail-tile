@@ -1,0 +1,90 @@
+.trail-tile {
+    overflow: hidden;
+    margin: 5px;
+    padding: 5px;
+    border: 4px solid;
+    border-radius: 10px;
+    display: inline-block;
+    box-shadow: 0 0;
+    width: 670px;
+    max-height: 115px;
+    transition: max-height 750ms ease-out;
+  } 
+  
+  .active-tile {
+    box-shadow: 8px 8px 1px;
+    max-height: 750px;
+    transition: max-height 750ms ease-in;
+  }
+  
+  .info-div {
+    display: inline-block;
+  }
+  
+  .condition-div {
+    position: absolute;
+    display: inline-block;
+    margin-top: 20px;
+    right: -20px;
+  }
+  
+  .trail-heading {
+    position: relative;
+    display: block;
+    color: black;
+  }
+  
+  .location-heading {
+    position: relative;
+    display: inline-block;
+    padding-left: 6px;
+  }
+  
+  .condition-heading {
+    display: inline-block;
+    position: absolute;
+    top: 4px;
+    padding-left: 15px;
+    font-size: 25px;
+  }
+  
+  .condition-sqaure {
+    display: inline-block;
+    width: 20%;
+    border: 4px solid;
+    border-radius: 7px;
+  }
+  
+  .info-dropdown {
+    text-align: left;
+    display: grid;
+    margin: 7px;
+  }
+  
+  .info-grid h6{
+    display: inline-block;
+  }
+  
+  #segment-list { 
+  }
+  
+  .map-div {
+    display: block;
+    border: 4px solid;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .trail-tile:hover {
+    box-shadow: 8px 8px 1px;
+  }
+  
+  .other-info {
+    visibility: visible;
+  }
+  
+  .last-updated-heading {
+    margin-top: 10px;
+  }
+  

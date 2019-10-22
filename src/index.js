@@ -3,90 +3,43 @@ import ReactDOM from 'react-dom';
 import './index.css';
 //import App from './App';
 import * as serviceWorker from './serviceWorker';
+import TrailTile from './trail-tile.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+debugger;
 
 const trailData = [
     {
         name:"Theodore Wirth",
+        lastUpdated:"Today",
         location:"Goledn Valley, MN",
-        condition:"Tacky"
+        condition:"Tacky",
+        squareUrl:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEX/AAAZ4gk3AAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC",
+        adminMessage:"Storms overnight. Please stay off all MOCA/MORC managed trails at Theo until they have a chance to thoroughly dry."
     },
     {
         name:"Carver Lake",
+        lastUpdated:"Today",
         location:"Woodbury, MN",
-        condition:"Dry"
+        condition:"Dry",
+        squareUrl:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAElBMVEVAygOW4HdEvwQ8zQA9ywRBygBw60gpAAABAUlEQVR4nO3PARGAMAwAsQKdf8vo+F3iIPO8387ZPXMrwz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+w7wfv64YnTVjj7gAAAAASUVORK5CYII=",
+        adminMessage:"Storms overnight. Please stay off all MOCA/MORC managed trails at Theo until they have a chance to thoroughly dry."
     },
     {
         name:"Lebanon Hills",
+        lastUpdated:"Today",
         location:"Eagan, MN",
-        condition:"Wet, Do Not Ride"
+        condition:"Closed",
+        squareUrl:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAElBMVEVAygOW4HdEvwQ8zQA9ywRBygBw60gpAAABAUlEQVR4nO3PARGAMAwAsQKdf8vo+F3iIPO8387ZPXMrwz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+wz7DPsM+w7wfv64YnTVjj7gAAAAASUVORK5CYII=",
+        adminMessage:"Storms overnight. Please stay off all MOCA/MORC managed trails at Theo until they have a chance to thoroughly dry."
     }
 ];
-
-class TrailInfo extends React.Component{
-    render(props){
-        return (
-            <div className="trail-info">
-                <h3 className="trail-name">{this.props.trailName}</h3>
-                <h5 className="trail-location">{this.props.trailLocation}</h5>
-            </div>
-        );
-    }
-}
-
-class TrailCondition extends React.Component{
-    render(props){
-        return (
-            <div className="trail-condition">
-                <img></img>
-                <h6>{this.props.trailCondition}</h6>
-            </div>
-        );
-    }
-}
-
-class StravaData extends React.Component{
-    render(props){
-        return (
-            <div>
-                <div>
-                    <h4>Rides Today</h4>
-                    <span>14</span>
-                </div>
-                <div>
-                    <h4>Some Other Data</h4>
-                    <span>27</span>
-                </div>
-            </div>
-        );
-    }
-}
-
-class TrailMap extends React.Component{
-    render(props){
-        return (
-            <img></img>
-        );
-    }
-}
 
 const TrailTileList = (props) => (
 	<div>
   	{props.trails.map(trail => <TrailTile {...trail}/>)}
 	</div>
 );
-
-class TrailTile extends React.Component{
-    render(props) {
-        return(
-            <div>
-                <TrailInfo trailName={this.props.name} trailLocation={this.props.location}/>
-                <TrailCondition trailCondition={this.props.condition}/>
-                <StravaData />
-                <TrailMap />
-            </div>
-        );
-    }
-}
 
 class App extends React.Component{
     state = {
@@ -96,7 +49,6 @@ class App extends React.Component{
     render() {
         return(
             <div>
-                <h1>Hello React</h1>
                 <TrailTileList trails={this.state.trails} />
             </div>
         );
