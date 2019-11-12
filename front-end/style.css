@@ -30,7 +30,8 @@ body {
   display: inline-block;
 }
 
-ul {
+.nav-tab-bar {
+  height: 100%;
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -38,26 +39,29 @@ ul {
   background-color: white;
 }
 
-li {
+.nav-tab {
+  height: 100%;
   float: left;
   align-content: center;
 }
 
-li a {
+.nav-tab:hover {
+  background-color: black;
+  color: white !important;
+  cursor: pointer;
+}
+
+.nav-tab a {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
   display: block;
   color: black;
   text-align: center; 
-  padding: 15px 30px 15px; 30px;
+  padding: 15px 30px 15px 30px;
   text-decoration: none;
-  height: auto;
-
+  font-weight: bold;
 }
-
-li a:hover {
-  background-color: black;
-  color: white !important;
-}
-
 
 .active-left {
   border-left: 4px solid black;
@@ -73,7 +77,7 @@ li a:hover {
   border-top: 0;
   position: relative;
   display: block;
-  width: 715px;
+  width: 700px;
   overflow-y: auto;
   overflow-x: hidden;
   float: left;
@@ -83,6 +87,15 @@ li a:hover {
 
 #sidebar, #content {
   height: 80vh; 
+}
+
+.segment-status {
+  padding-left: 350px;
+  color: red;
+}
+
+.segment-difficulty {
+  height: 25px; 
 }
 
 #content {
@@ -112,7 +125,7 @@ li a:hover {
   border-radius: 10px;
   display: inline-block;
   box-shadow: 0 0;
-  width: 670px;
+  width: 650px;
   max-height: 115px;
   transition: max-height 750ms ease-out;
 } 
@@ -171,9 +184,6 @@ li a:hover {
   display: inline-block;
 }
 
-#segment-list { 
-}
-
 .map-div {
   display: block;
   border: 4px solid;
@@ -193,27 +203,6 @@ li a:hover {
 
 .last-updated-heading {
   margin-top: 10px;
-}
-
-.navigation-tabs {
-  position: relative;
-  right: -10px;
-  display: inline-block;
-}
-
-.nav-tab {
-  background-color: black;
-  color: white !important;
-  padding: 5px;
-  border: 3px solid black;
-  border-radius: 5px;
-  margin-right: 10px;
-}
-
-.nav-tab:hover {
-  background-color: white;
-  color: black !important;
-  box-shadow: 5px 5px 1px;
 }
 
 .trail-tile:hover .view-trail-icon {
