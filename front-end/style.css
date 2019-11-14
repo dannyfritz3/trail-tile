@@ -51,7 +51,7 @@ body {
   cursor: pointer;
 }
 
-.nav-tab a {
+.nav-tab-link {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
@@ -62,9 +62,9 @@ body {
   text-decoration: none;
   font-weight: bold;
 }
-
 .active-left {
   border-left: 4px solid black;
+  float: right;
 }
 
 .active-right {
@@ -77,12 +77,13 @@ body {
   border-top: 0;
   position: relative;
   display: block;
-  width: 700px;
+  width: 635px;
   overflow-y: auto;
   overflow-x: hidden;
   float: left;
   padding-top: 25px;
   padding-left: 5px;
+  padding-right: 5px;
 }
 
 #sidebar, #content {
@@ -125,7 +126,7 @@ body {
   border-radius: 10px;
   display: inline-block;
   box-shadow: 0 0;
-  width: 650px;
+  width: 600px;
   max-height: 115px;
   transition: max-height 750ms ease-out;
 } 
@@ -141,10 +142,11 @@ body {
 }
 
 .condition-div {
-  position: absolute;
+  position: relative;
   display: inline-block;
-  margin-top: 10px;
-  right: -20px;
+  float: right;
+  top: 10px;
+  width: 175px;
 }
 
 .trail-heading {
@@ -161,7 +163,7 @@ body {
 
 .condition-heading {
   display: inline-block;
-  position: absolute;
+  position: relative;
   top: 4px;
   padding-left: 15px;
   font-size: 25px;
@@ -169,7 +171,7 @@ body {
 
 .condition-sqaure {
   display: inline-block;
-  width: 20%;
+  width: 45px;
   border: 4px solid;
   border-radius: 7px;
 }
@@ -219,7 +221,7 @@ body {
   visibility: hidden;
   position: absolute;
   display: inline-block;
-  width: 4%;
+  width: 30px;
   margin-left: 15px;
   opacity: 0.75;
 }
