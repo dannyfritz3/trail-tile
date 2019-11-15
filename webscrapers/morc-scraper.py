@@ -5,7 +5,8 @@ import json
 
 def main():
     trail_data = scrape_for_trail_data()
-    print(json.dumps(trail_data))
+    with open('trail_data.json', 'w') as outfile:
+        json.dump(trail_data, outfile)
 
 def scrape_for_trail_data():
     page = requests.get("http://www.morcmtb.org/forums/trailconditions.php")
