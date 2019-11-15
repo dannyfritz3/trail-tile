@@ -16,6 +16,7 @@ class TrailTitle extends React.Component{
             <div className="info-div">
                 <h1 className="trail-heading">{this.props.trailName}</h1>
                 <h4 className="location-heading">{this.props.trailLocation}</h4>
+                <img class="view-trail-icon" src="https://cdn2.iconfinder.com/data/icons/pittogrammi/142/61-512.png" alt="icon" onclick="viewTrailOnMap(event, this)"/>
             </div>
         )
     };
@@ -37,10 +38,44 @@ class TrailOtherInfo extends React.Component{
     render(props) {
         return (
             <div className="other-info">
-                <ul className="info-dropdown">
                 <p>{this.props.TrailAdminMessage}</p>
-                <button id="segment-button">4 segments</button>
-                </ul>
+                <h5>Trail Sections</h5>
+                <div className="tabs">
+                    <TrailOtherInfoTab/>
+                </div>
+            </div>
+        );
+    }
+}
+
+class TrailOtherInfoTab extends React.Component{
+    render(props) {
+        return (
+            <div className="tab">
+                <input type="checkbox" id="chck1"/>
+                <TrailOtherInfoTabLabel/>
+            </div>
+        );
+    }
+}
+
+class TrailOtherInfoTabLabel extends React.Component{
+    render(props) {
+        return (
+            <label class="tab-label" for="chck1">
+                <p class="segment-status">Closed</p>
+                <img class="segment-difficulty" src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Ski_trail_rating_symbol-green_circle.svg"/>
+                <TrailOtherInfoTabContents/>
+            </label>
+        );
+    }
+}
+
+class TrailOtherInfoTabContents extends React.Component{
+    render(props) {
+        return (
+            <div class="tab-content">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum, reiciendis!
             </div>
         );
     }
