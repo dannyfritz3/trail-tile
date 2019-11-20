@@ -1,33 +1,53 @@
 .trail-tile {
-    overflow: hidden;
-    margin: 5px;
-    padding: 5px;
-    border: 4px solid;
-    border-radius: 10px;
-    display: inline-block;
-    box-shadow: 0 0;
-    width: 670px;
-    max-height: 115px;
-    transition: max-height 750ms ease-out;
-  } 
+  overflow: hidden;
+  margin: 5px;
+  padding: 5px;
+  border: 4px solid;
+  border-radius: 10px;
+  display: inline-block;
+  box-shadow: 0 0;
+  width: 600px;
+  max-height: 115px;
+  transition: max-height 750ms ease-out;
+} 
   
-  .active-tile {
-    box-shadow: 8px 8px 1px;
-    max-height: 750px;
-    transition: max-height 750ms ease-in;
-  }
+.active-tile {
+  box-shadow: 8px 8px 1px;
+  max-height: 750px;
+  transition: max-height 750ms ease-in;
+}
+
+.trail-tile:hover {
+  box-shadow: 8px 8px 1px;
+}
   
   .info-div {
     display: inline-block;
   }
   
   .condition-div {
-    position: absolute;
+    position: relative;
     display: inline-block;
-    margin-top: 20px;
-    right: -20px;
+    float: right;
+    top: 10px;
+    width: 175px;
+  }
+
+  .condition-heading {
+    display: inline-block;
+    position: absolute;
+    top: 4px;
+    padding-left: 15px;
+    font-size: 25px;
   }
   
+  .condition-square {
+    display: inline-block;
+    width: 45px;
+    border: 4px solid;
+    border-radius: 7px;
+  }
+
   .trail-heading {
     position: relative;
     display: block;
@@ -40,21 +60,6 @@
     padding-left: 6px;
   }
   
-  .condition-heading {
-    display: inline-block;
-    position: absolute;
-    top: 4px;
-    padding-left: 15px;
-    font-size: 25px;
-  }
-  
-  .condition-sqaure {
-    display: inline-block;
-    width: 20%;
-    border: 4px solid;
-    border-radius: 7px;
-  }
-  
   .info-dropdown {
     text-align: left;
     display: grid;
@@ -65,19 +70,21 @@
     display: inline-block;
   }
   
-  #segment-list { 
+  .segment-status {
+    padding-left: 350px;
+    color: red;
   }
   
+  .segment-difficulty {
+    height: 25px; 
+  }
+
   .map-div {
     display: block;
     border: 4px solid;
     border-radius: 5px;
     width: 100%;
     height: 100%;
-  }
-  
-  .trail-tile:hover {
-    box-shadow: 8px 8px 1px;
   }
   
   .other-info {
@@ -88,3 +95,21 @@
     margin-top: 10px;
   }
   
+  .trail-tile:hover .view-trail-icon {
+    visibility: visible;
+  }
+  
+  .view-trail-icon:hover {
+    transform: scale(1.2);
+    opacity: 1;
+    cursor: pointer;
+  }
+  
+  .view-trail-icon {
+    visibility: hidden;
+    position: absolute;
+    display: inline-block;
+    width: 30px;
+    margin-left: 15px;
+    opacity: 0.75;
+  }

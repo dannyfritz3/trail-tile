@@ -1,15 +1,6 @@
 import React from 'react';
 import './trail-tile.css';
 
-function clickTrailTile(el) {
-  if(!el.classList.contains("active-tile")){
-    el.classList.add("active-tile");
-  } else {
-    el.classList.remove("active-tile");
-  }
-}
-
-
 class TrailTitle extends React.Component{
     render(props) {
         return (
@@ -27,7 +18,7 @@ class TrailCondition extends React.Component{
         return (
             <div className="condition-div">
                 <img className="condition-square" src={this.props.trailSquareUrl} alt="logo"/>
-                <p className="condition-heading">{this.props.trailCondition}</p>
+                <p className="condition-heading"><b>{this.props.trailCondition}</b></p>
                 <h6 className="last-updated-heading">Last Updated: <i>{this.props.trailLastUpdated}</i></h6>
             </div>
         );
@@ -82,11 +73,21 @@ class TrailOtherInfoTabContents extends React.Component{
 }
 
 class TrailTile extends React.Component{
+    constructor(props) {
+        function clickTrailTile(el) {
+            if(!el.classList.contains("active-tile")){
+              el.classList.add("active-tile");
+            } else {
+              el.classList.remove("active-tile");
+            }
+        }
+    }
+
     render(props) {
         return(
-            <div className="trail-tile" onClick={clickTrailTile(this)}>
+            <div className="trail-tile" onClick={this.clickTrailTile}>
                 <TrailTitle trailName={this.props.name} trailLocation={this.props.location}/>
-                <TrailCondition trailCondition={this.props.condition} trailSquareUrl={this.props.trailSquareUrl} trailLastUpdated={this.props.lastUpdated}/>
+                <TrailCondition trailCondition={this.props.condition} trailSquareUrl={this.props.squareUrl} trailLastUpdated={this.props.lastUpdated}/>
                 <TrailOtherInfo trailAdminMessage={this.props.adminMessage}/>
             </div>
         );
