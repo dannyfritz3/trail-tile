@@ -15,7 +15,7 @@ const condition_colors = {
 const trailData = [
     {
         name:"Theodore Wirth",
-        lastUpdated:"Today",
+        lastUpdated:"Yesterday",
         location:"Goledn Valley, MN",
         condition:"Tacky",
         squareUrl:condition_colors.green,

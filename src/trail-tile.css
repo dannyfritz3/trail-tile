@@ -30,7 +30,7 @@
     display: inline-block;
     float: right;
     top: 10px;
-    width: 175px;
+    width: 195px;
   }
 
   .condition-heading {
@@ -89,6 +89,7 @@
   
   .other-info {
     visibility: visible;
+    margin: 15px;
   }
   
   .last-updated-heading {
