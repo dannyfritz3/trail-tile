@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import './style.css';
-//import App from './App';
 import * as serviceWorker from './serviceWorker';
 import TrailTile from './trail-tile.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -82,7 +80,7 @@ class TrailMapContainer extends React.Component{
     render(props) {
         return (
             <div id="content">
-                <iframe title="map" id="masterMap" style={{width:'100%', maxWidth:'100vw', maxHeight:'100vh', height:'100%'}} frameBorder="0" scrolling="no" src="https://www.mtbproject.com/widget/map?favs=0&location=fixed&x=-10478086&y=5827237&z=5.5&h=1000"></iframe>
+                <iframe title="map" id="masterMap" style={{width:'100%', maxWidth:'100vw', maxHeight:'100vh', height:'100%'}} frameBorder="0" scrolling="no" src={this.props.mapSrc}></iframe>
             </div>
         )
     }
@@ -108,12 +106,13 @@ class App extends React.Component{
                     <PageHeader />
                     <TrailTileListContainer trailList={this.state.trails}/>
                 </div>
-                <TrailMapContainer />
+                <TrailMapContainer mapSrc="https://www.mtbproject.com/widget/map?favs=0&location=fixed&x=-10478086&y=5827237&z=5.5&h=1000"/>
             </div>
         );
     }
 }
 
+export default TrailMapContainer;
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

@@ -1,6 +1,14 @@
 import React from 'react';
 import './trail-tile.css';
+import ReactDOM from 'react-dom';
+import TrailMapContainer from './index.js';
 // import './style.css';
+
+const map_data = {
+    "Theodore Wirth":"https://www.mtbproject.com/widget/map?favs=0&location=fixed&x=-10389275&y=5618117&z=12.2&h=1000",
+    "Carver Lake":"https://www.mtbproject.com/widget/map?favs=0&location=fixed&x=-10350402&y=5606419&z=14.5&h=1000",
+    "Lebanon Hills":"https://www.mtbproject.com/widget/map?favs=0&location=fixed&x=-10374642&y=5586803&z=14.6&h=1000"
+  };
 
 class TrailTitle extends React.Component{
     constructor(props){
@@ -11,7 +19,8 @@ class TrailTitle extends React.Component{
         var el = event.target;
         event.stopPropagation();
         var trailNameClicked = el.parentElement.firstElementChild.innerText;
-        //document.getElementById("masterMap").src = map_data[trailNameClicked];
+        ReactDOM.render(<TrailMapContainer mapSrc={map_data[trailNameClicked]}/>, document.getElementById("content"));
+        // document.getElementById("masterMap").src = map_data[trailNameClicked];
     }
 
     render(props) {
