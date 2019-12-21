@@ -1,5 +1,6 @@
 import React from 'react';
 import './trail-tile.css';
+// import './style.css';
 
 class TrailTitle extends React.Component{
     constructor(props){
@@ -16,7 +17,7 @@ class TrailTitle extends React.Component{
     render(props) {
         return (
             <div className="info-div">
-                <h1 className="trail-heading">{this.props.trailName}</h1>
+                <h2 className="trail-heading"><b>{this.props.trailName}</b></h2>
                 <h4 className="location-heading">{this.props.trailLocation}</h4>
                 <img className="view-trail-icon" src="https://cdn2.iconfinder.com/data/icons/pittogrammi/142/61-512.png" alt="icon" onClick={(e) => this.viewTrailOnMap(e)}/>
             </div>
@@ -64,7 +65,7 @@ class TrailOtherInfoTab extends React.Component{
 class TrailOtherInfoTabLabel extends React.Component{
     render(props) {
         return (
-            <label className="tab-label" for="chck1">
+            <label className="tab-label" htmlFor="chck1">
                 <p className="segment-status">Closed</p>
                 <img className="segment-difficulty" src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Ski_trail_rating_symbol-green_circle.svg" alt="icon"/>
                 <TrailOtherInfoTabContents/>

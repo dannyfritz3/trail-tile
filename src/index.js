@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+// import './style.css';
 //import App from './App';
 import * as serviceWorker from './serviceWorker';
 import TrailTile from './trail-tile.js';
@@ -16,7 +17,7 @@ const trailData = [
     {
         name:"Theodore Wirth",
         lastUpdated:"Yesterday",
-        location:"Goledn Valley, MN",
+        location:"Golden Valley, MN",
         condition:"Tacky",
         squareUrl:condition_colors.green,
         adminMessage:"Storms overnight. Please stay off all MOCA/MORC managed trails at Theo until they have a chance to thoroughly dry."
@@ -53,6 +54,48 @@ const TrailTileList = (props) => (
 	</div>
 );
 
+class PageHeader extends React.Component{
+    render(props) {
+        return (
+            <div id="header">
+                <ul className="nav-tabs">
+                    <p id="logo">MinnTrail</p>
+                    <NavTab navTabTitle="About" linkRef="#about"/>
+                    <NavTab navTabTitle="Contact" linkRef="#contact"/>
+                </ul>
+            </div>
+        )
+    };
+}
+
+class TrailTileListContainer extends React.Component{
+    render(props) {
+        return (
+            <div id="sidebar">
+                <TrailTileList trails={this.props.trailList} />
+            </div>
+        )
+    };
+}
+
+class TrailMapContainer extends React.Component{
+    render(props) {
+        return (
+            <div id="content">
+                <iframe title="map" id="masterMap" style={{width:'100%', maxWidth:'100vw', maxHeight:'100vh', height:'100%'}} frameBorder="0" scrolling="no" src="https://www.mtbproject.com/widget/map?favs=0&location=fixed&x=-10478086&y=5827237&z=5.5&h=1000"></iframe>
+            </div>
+        )
+    }
+}
+
+class NavTab extends React.Component{
+    render(props) {
+        return (
+        <li className="nav-tab active-left" style={{float:'right'}}><a className="nav-tab-link" href={this.props.linkRef}>{this.props.navTabTitle}</a></li>
+        )
+    };
+}
+
 class App extends React.Component{
     state = {
         trails: trailData,
@@ -60,8 +103,12 @@ class App extends React.Component{
 
     render() {
         return(
-            <div>
-                <TrailTileList trails={this.state.trails} />
+            <div id="page-container">
+                <div id="content-wrap">
+                    <PageHeader />
+                    <TrailTileListContainer trailList={this.state.trails}/>
+                </div>
+                <TrailMapContainer />
             </div>
         );
     }

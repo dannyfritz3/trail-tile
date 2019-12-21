@@ -18,7 +18,8 @@ def scrape_for_trail_data():
 
     for item in contents:
         if not isinstance(item, str):
-            if item.text.endswith('\r\n\n\n'):
+            item_text = getattr(item, 'text')
+            if item_text.endswith('\r\n\n\n'):
                 raw_trail_info.append(item.text)
 
     for item in raw_trail_info:
