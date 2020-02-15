@@ -1,5 +1,5 @@
 import React from 'react';
-import './page-layout.css';
+import './styles/page-layout.css';
 
 class PageHeader extends React.Component{
     render(props) {

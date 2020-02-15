@@ -2,10 +2,15 @@ from bs4 import BeautifulSoup
 import requests
 import re
 import json
+from locationResolver import resolveTrailLocation
+from parseTimestamp import parseTimestamp
 
 def main():
     trail_data = scrape_for_trail_data()
-    with open('trail_data.json', 'w') as outfile:
+    for x in trail_data:
+        x["parseTimestamp"] = parseTimestamp(x.get("timestamp"))
+        x["location"] = resolveTrailLocation(x.get("name"))
+    with open('../src/trail_data.json', 'w') as outfile:
         json.dump(trail_data, outfile)
 
 def scrape_for_trail_data():
@@ -22,6 +27,10 @@ def scrape_for_trail_data():
             if item_text.endswith('\r\n\n\n'):
                 raw_trail_info.append(item.text)
 
+<<<<<<< Updated upstream
+=======
+    keys = ["name", "condition", "comments", "username", "timestamp", "parsedTimestamp", "location"]
+>>>>>>> Stashed changes
     for item in raw_trail_info:
         parsed_data_str = re.sub(r"((\r)*(\n)+(\t)*(\r)*(\n)*(\t)*)", ',', item)
         parsed_data_obj = parsed_data_str[1:len(parsed_data_str)-1].split(',')
