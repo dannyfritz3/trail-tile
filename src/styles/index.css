@@ -138,9 +138,6 @@
   border-right: 3px solid black;
 }
 
-#segment-list { 
-}
-
 .map-div {
   display: block;
   border: 4px solid;
@@ -167,75 +164,4 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: black; 
-}
-
-/* Accordion styles */
-.tabs {
-  border-radius: 8px;
-  overflow: hidden;
-  border: 3px solid black;
-}
-
-.tab {
-  width: 100%;
-  color: black;
-  overflow: hidden;
-}
-.tab-label {
-  display: flex;
-  justify-content: space-between;
-  padding: 1em;
-  background: white;
-  font-weight: bold;
-  cursor: pointer;
-  margin-bottom: 0;
-  /* Icon */
-}
-.tab-label:hover {
-  background: black;
-  color: white;
-}
-.tab-label::after {
-  content: "\276F";
-  width: 1em;
-  height: 1em;
-  text-align: center;
-  transition: all .35s;
-}
-.tab-content {
-  max-height: 0;
-  padding: 0 1em;
-  color: #2c3e50;
-  background: white;
-  transition: all .35s;
-}
-.tab-close {
-  display: flex;
-  justify-content: flex-end;
-  padding: 1em;
-  font-size: 0.75em;
-  background: #2c3e50;
-  cursor: pointer;
-}
-.tab-close:hover {
-  background: #1a252f;
-}
-
-input:checked + .tab-label {
-  background: black;
-  color: white;
-}
-input:checked + .tab-label::after {
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
-}
-input:checked ~ .tab-content {
-  max-height: 100vh;
-  padding: 1em;
-}
-
-input {
-  position: absolute;
-  opacity: 0;
-  z-index: -1;
 }

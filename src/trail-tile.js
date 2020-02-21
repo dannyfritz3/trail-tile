@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import TrailMapContainer from './index.js';
 
 const map_data = {
-    "Theodore Wirth":"https://www.mtbproject.com/widget/map?favs=0&location=fixed&x=-10389275&y=5618117&z=12.2&h=1000",
+    "Theodore Wirth":"https://www.mtbproject.com/widget/map?favs=0&location=fixed&x=-10389619&y=5618156&z=12&h=750",
     "Carver Lake":"https://www.mtbproject.com/widget/map?favs=0&location=fixed&x=-10350402&y=5606419&z=14.5&h=1000",
     "Lebanon Hills":"https://www.mtbproject.com/widget/map?favs=0&location=fixed&x=-10374642&y=5586803&z=14.6&h=1000"
   };
