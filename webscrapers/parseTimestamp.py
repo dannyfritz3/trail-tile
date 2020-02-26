@@ -1,7 +1,7 @@
 from datetime import datetime
 
 def parseTimestamp(timestamp):
-    timestamp_split = timestamp.split(" ")
+    timestamp_split = timestamp.split(", ")
     timestamp_date = timestamp_split[0]
     timestamp_time = timestamp_split[1]
     

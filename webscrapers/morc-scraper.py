@@ -24,20 +24,23 @@ def scrape_for_trail_data():
             if item_text.endswith('\r\n\n\n'):
                 raw_trail_info.append(item.text)
 
-    keys = ["name", "condition", "comments", "username", "timestamp", "parsedTimestamp", "location"]
-    for item in raw_trail_info:
-        parsed_data_str = re.sub(r"((\r)*(\n)+(\t)*(\r)*(\n)*(\t)*)", ',', item)
-        parsed_data_obj = parsed_data_str[1:len(parsed_data_str)-1].split(',')
-        parsed_trail_info.append(parsed_data_obj)
+    keys = ["name", "condition", "comments", "username", "timestamp", "parsedTimestamp", "location", "trailforksMapId"]
+    with open('./utility-data/static_location_data.json') as infile:
+        location_data = json.load(infile);
 
-    parsed_trail_info = append_remaining_trail_data(parsed_trail_info)
+        for item in raw_trail_info:
+            parsed_data_str = re.sub(r"((\r)*(\n)+(\t)*(\r)*(\n)*(\t)*)", '|', item)
+            parsed_data_obj = parsed_data_str[1:len(parsed_data_str)-1].split('|')
+            if len(parsed_data_obj) > 5:
+                for x in range(3, len(parsed_data_obj)-2):
+                    parsed_data_obj[2] += parsed_data_obj.pop(3)
+            parsed_data_obj.append(parseTimestamp(parsed_data_obj[4]))
+            parsed_data_obj.append(location_data[parsed_data_obj[0]].get("location"))
+            parsed_data_obj.append(location_data[parsed_data_obj[0]].get("data-rid"))
+            parsed_data_obj = dict(zip(keys, parsed_data_obj))
+            parsed_trail_info.append(parsed_data_obj)
+
     return parsed_trail_info
-
-def append_remaining_trail_data(parsed_trail_info):
-    for x in parsed_trail_info:
-        x["parseTimestamp"] = parseTimestamp(x.get("timestamp"))
-        x["location"] = resolveTrailLocation(x.get("name"))
-    return trail_data
 
 if __name__ == "__main__":
     main()

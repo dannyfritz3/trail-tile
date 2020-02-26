@@ -1,137 +1,110 @@
-[
-    {
-        "name": "Afton Alps",
+{
+    "Afton Alps": {
         "location": "Hastings",
         "data-rid": ""
     },
-    {
-        "name": "Battle Creek",
+    "Battle Creek": {
         "location": "St. Paul",
         "data-rid": "5538"
     },
-    {
-        "name": "Monticello",
+    "Monticello": {
         "location": "Monticello",
         "data-rid": "13706"
     },
-    {
-        "name": "Carver Lake",
+    "Carver Lake": {
         "location": "Woodbury",
         "data-rid": "9243"
     },
-    {
-        "name": "Cottage Grove Bike Park",
+    "Cottage Grove Bike Park": {
         "location": "Cottage Grove",
         "data-rid": ""
     },
-    {
-        "name": "Elm Creek",
+    "Elm Creek": {
         "location": "Maple Grove",
         "data-rid": "5543"
     },
-    {
-        "name": "Hillside Park",
+    "Hillside Park": {
         "location": "Elk River",
         "data-rid": "7593"
     },
-    {
-        "name": "Lake Rebecca",
+    "Lake Rebecca": {
         "location": "Hastings",
         "data-rid": "12004"
     },
-    {
-        "name": "Lebanon Hills",
+    "Lebanon Hills": {
         "location": "Eagan",
         "data-rid": "3438"
     },
-    {
-        "name": "MN River Bottoms",
+    "MN River Bottoms": {
         "location": "Bloomington",
         "data-rid": "25053"
     },
-    {
-        "name": "Murphy Hanrehan",
+    "Murphy Hanrehan": {
         "location": "Savage",
         "data-rid": "7646"
     },
-    {
-        "name": "Salem Hills",
+    "Salem Hills": {
         "location": "Inver Grove Heights",
         "data-rid": "12008"
     },
-    {
-        "name": "Terrace Oaks",
+    "Terrace Oaks": {
         "location": "Burnsville",
         "data-rid": "12011"
     },
-    {
-        "name": "Theodore Wirth",
+    "Theodore Wirth": {
         "location": "Golden Valley",
         "data-rid": "9224"
     },
-    {
-        "name": "7-Mile",
+    "7-Mile": {
         "location": "Minneapolis",
         "data-rid": ""
     },
-    {
-        "name": "Fort LeHillier",
+    "Fort LeHillier": {
         "location": "Mankato",
         "data-rid": ""
     },
-    {
-        "name": "Holzinger Lodge",
+    "Holzinger Lodge": {
         "location": "Winona",
         "data-rid": "10305"
     },
-    {
-        "name": "Mt. Kato",
+    "Mt. Kato": {
         "location": "Mankato",
         "data-rid": "22512"
     },
-    {
-        "name": "Memorial Trail",
+    "Memorial Trail": {
         "location": "Red Wing",
         "data-rid": "13282"
     },
-    {
-        "name": "Grand Rapids",
+    "Grand Rapids": {
         "location": "Grand Rapids",
         "data-rid": "14550"
     },
-    {
-        "name": "Jail Trail",
+    "Jail Trail": {
         "location": "St Cloud",
         "data-rid": "7592"
     },
-    {
-        "name": "Milaca",
+    "Milaca": {
         "location": "Milaca",
         "data-rid": ""
     },
-    {
-        "name": "Hartley Park",
+    "Hartley Park": {
         "location": "Duluth",
         "data-rid": "7575"
     },
-    {
-        "name": "Piedmont Trail",
+    "Piedmont Trail": {
         "location": "Duluth",
         "data-rid": "9224"
     },
-    {
-        "name": "Whitetail Ridge",
+    "Whitetail Ridge": {
         "location": "River Falls,",
         "data-rid": "19492"
     },
-    {
-        "name": "Woolly Trail",
+    "Woolly Trail": {
         "location": "St. Croix, WI",
         "data-rid": "19492"
     },
-    {
-        "name": "Levis Trow",
+    "Levis Trow": {
         "location": "Neillsville, WI",
         "data-rid": "12627"
     }
-]
+}

@@ -59,7 +59,7 @@ class TrailMapContainerTrailForks extends React.Component {
     render(props) {
         return (
             <div id="content">
-                <div class="TrailforksWidgetMap" data-w="714px" data-h="718px" data-rid="9224" data-activitytype="1" data-maptype="trailforks" data-trailstyle="difficulty" data-controls="0" data-list="0" data-dml="1" data-layers="labels,poi,polygon,directory,region" data-z="" data-lat="" data-lon="" data-hideunsanctioned="0"></div>
+                <div class="TrailforksWidgetMap" data-w="714px" data-h="718px" data-rid={this.props.mapId} data-activitytype="1" data-maptype="trailforks" data-trailstyle="difficulty" data-controls="0" data-list="0" data-dml="1" data-layers="labels,poi,polygon,directory,region" data-z="" data-lat="" data-lon="" data-hideunsanctioned="0"></div>
             </div>
         );
     }
@@ -86,13 +86,13 @@ class App extends React.Component{
                     <TrailTileListContainer trailList={this.state.trails}/>
                 </div>
                 {/* <TrailMapContainer mapSrc="https://www.mtbproject.com/widget/map?favs=0&location=fixed&x=-10478086&y=5827237&z=5.5&h=1000"/> */}
-                <TrailMapContainerTrailForks />
+                <TrailMapContainerTrailForks mapId="3438"/>
             </div>
         );
     }
 }
 
-export default TrailMapContainer;
+export default TrailMapContainerTrailForks;
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

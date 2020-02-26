@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles/trail-tile.css';
 import ReactDOM from 'react-dom';
-import TrailMapContainer from './index.js';
+import TrailMapContainerTrailForks from './index.js';
 
 const map_data = {
     "Theodore Wirth":"https://www.mtbproject.com/widget/map?favs=0&location=fixed&x=-10389619&y=5618156&z=12&h=750",
@@ -17,8 +17,7 @@ class TrailTitle extends React.Component{
     viewTrailOnMap(event) {
         var el = event.target;
         event.stopPropagation();
-        var trailNameClicked = el.parentElement.firstElementChild.innerText;
-        ReactDOM.render(<TrailMapContainer mapSrc={map_data[trailNameClicked]}/>, document.getElementById("content"));
+        ReactDOM.render(<TrailMapContainerTrailForks mapId={this.props.trailforksMapId}/>, document.getElementById("content"));
         // document.getElementById("masterMap").src = map_data[trailNameClicked];
     }
 
@@ -114,8 +113,8 @@ class TrailTile extends React.Component{
     render(props) {
         return(
             <div className="trail-tile" onClick={(e) => this.clickTrailTile(e)}>
-                <TrailTitle trailName={this.props.name} trailLocation={this.props.location}/>
-                <TrailCondition trailCondition={this.props.condition} trailTimestamp={this.props.parseTimestamp}/>
+                <TrailTitle trailName={this.props.name} trailLocation={this.props.location} trailforksMapId={this.props.trailforksMapId}/>
+                <TrailCondition trailCondition={this.props.condition} trailTimestamp={this.props.parsedTimestamp}/>
                 {/* <TrailWeatherOutlook /> */}
             </div>
         );
