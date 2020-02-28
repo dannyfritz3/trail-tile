@@ -2,8 +2,8 @@ from bs4 import BeautifulSoup
 import requests
 import re
 import json
-from locationResolver import resolveTrailLocation
-from parseTimestamp import parseTimestamp
+from LocationResolverService import resolveTrailLocation
+from ParseTimestamp import parseTimestamp
 
 def main():
     trail_data = scrape_for_trail_data()

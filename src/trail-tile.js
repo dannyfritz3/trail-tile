@@ -3,12 +3,6 @@ import './styles/trail-tile.css';
 import ReactDOM from 'react-dom';
 import TrailMapContainerTrailForks from './index.js';
 
-const map_data = {
-    "Theodore Wirth":"https://www.mtbproject.com/widget/map?favs=0&location=fixed&x=-10389619&y=5618156&z=12&h=750",
-    "Carver Lake":"https://www.mtbproject.com/widget/map?favs=0&location=fixed&x=-10350402&y=5606419&z=14.5&h=1000",
-    "Lebanon Hills":"https://www.mtbproject.com/widget/map?favs=0&location=fixed&x=-10374642&y=5586803&z=14.6&h=1000"
-  };
-
 class TrailTitle extends React.Component{
     constructor(props){
         super(props);
@@ -17,7 +11,9 @@ class TrailTitle extends React.Component{
     viewTrailOnMap(event) {
         var el = event.target;
         event.stopPropagation();
-        ReactDOM.render(<TrailMapContainerTrailForks mapId={this.props.trailforksMapId}/>, document.getElementById("content"));
+        this.changeCurrentMapId(this.props.trailforksMapId);
+        ReactDOM.render(<TrailMapContainerTrailForks mapId={this.props.trailforksMapId}/>, 
+            document.getElementById("content"));
         // document.getElementById("masterMap").src = map_data[trailNameClicked];
     }
 
@@ -26,7 +22,8 @@ class TrailTitle extends React.Component{
             <div className="info-div">
                 <h2 className="trail-heading" style={this.props.trailName.length >= 18 ? {fontSize:"30px"} : {} }><b>{this.props.trailName}</b></h2>
                 <h4 className="location-heading">{this.props.trailLocation}</h4>
-                <img className="view-trail-icon" src="https://cdn2.iconfinder.com/data/icons/pittogrammi/142/61-512.png" alt="icon" onClick={(e) => this.viewTrailOnMap(e)}/>
+                <img className="view-trail-icon" src="https://cdn2.iconfinder.com/data/icons/pittogrammi/142/61-512.png" 
+                alt="icon" onClick={(e) => this.viewTrailOnMap(e)}/>
             </div>
         )
     };
@@ -89,7 +86,8 @@ class TrailWeatherOutlookDay extends React.Component {
         return (
             <div class="outlook">
                 <p class="day-header">{this.props.weatherDay}</p>
-                <img class="weather-icon" src="https://www.shareicon.net/data/128x128/2016/10/29/848790_weather_512x512.png"/>
+                <img class="weather-icon" 
+                src="https://www.shareicon.net/data/128x128/2016/10/29/848790_weather_512x512.png"/>
                 <p class="temp-header">{this.props.weatherTemp}</p>
             </div> 
         );
@@ -113,7 +111,8 @@ class TrailTile extends React.Component{
     render(props) {
         return(
             <div className="trail-tile" onClick={(e) => this.clickTrailTile(e)}>
-                <TrailTitle trailName={this.props.name} trailLocation={this.props.location} trailforksMapId={this.props.trailforksMapId}/>
+                <TrailTitle trailName={this.props.name} trailLocation={this.props.location} 
+                trailforksMapId={this.props.trailforksMapId}/>
                 <TrailCondition trailCondition={this.props.condition} trailTimestamp={this.props.parsedTimestamp}/>
                 {/* <TrailWeatherOutlook /> */}
             </div>

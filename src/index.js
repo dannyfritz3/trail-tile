@@ -21,8 +21,6 @@ class PageHeader extends React.Component{
                     <NavTab navTabTitle="About" linkRef="#about"/>
                     <NavTab navTabTitle="Community" linkRef="#community"/>
                     <NavTab navTabTitle="Events" linkRef="#events"/>
-
-
                 </ul>
             </div>
         )
@@ -43,23 +41,37 @@ class TrailMapContainer extends React.Component{
     render(props) {
         return (
             <div id="content">
-                <iframe title="map" id="masterMap" style={{width:'100%', maxWidth:'100vw', maxHeight:'100vh', height:'100%'}} frameBorder="0" scrolling="no" src={this.props.mapSrc}></iframe>
+                <iframe title="map" id="masterMap" style={{width:'100%', maxWidth:'100vw', maxHeight:'100vh', 
+                height:'100%'}} frameBorder="0" scrolling="no" src={this.props.mapSrc}></iframe>
             </div>
         )
     }
 }
 
 class TrailMapContainerTrailForks extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {height: 0, width: 0, currentMapId: "3438"};
+    }
     componentDidMount() {
         var script = document.createElement("script");
         script.setAttribute("src", "https://es.pinkbike.org/ttl-86400/sprt/j/trailforks/widget.js");
+        script.setAttribute("zoom", "-1");
         document.getElementsByTagName("head")[0].appendChild(script);
         var widgetCheck = false;
+        const height = document.getElementById('content-wrap').clientHeight;
+        const width =document.getElementById('content').clientWidth;
+        this.setState({ height: height, width: width });
     };
+    
     render(props) {
         return (
             <div id="content">
-                <div class="TrailforksWidgetMap" data-w="714px" data-h="718px" data-rid={this.props.mapId} data-activitytype="1" data-maptype="trailforks" data-trailstyle="difficulty" data-controls="0" data-list="0" data-dml="1" data-layers="labels,poi,polygon,directory,region" data-z="" data-lat="" data-lon="" data-hideunsanctioned="0"></div>
+                <div class="TrailforksWidgetMap" data-w={this.state.width + "px"} 
+                data-h={this.state.height + "px"} data-rid={this.state.currentMapId} 
+                data-activitytype="1" data-maptype="trailforks" data-trailstyle="difficulty" data-controls="0" 
+                data-list="0" data-dml="1" data-layers="labels,poi,polygon,directory,region" data-z="" data-lat="" 
+                data-lon="" data-hideunsanctioned="0"></div>
             </div>
         );
     }
@@ -68,7 +80,8 @@ class TrailMapContainerTrailForks extends React.Component {
 class NavTab extends React.Component{
     render(props) {
         return (
-        <li className="nav-tab active-left" style={{float:'right'}}><a className="nav-tab-link" href={this.props.linkRef}>{this.props.navTabTitle}</a></li>
+        <li className="nav-tab active-left" style={{float:'right'}}><a className="nav-tab-link" 
+        href={this.props.linkRef}>{this.props.navTabTitle}</a></li>
         )
     };
 }
@@ -76,7 +89,11 @@ class NavTab extends React.Component{
 class App extends React.Component{
     state = {
         trails: trail_data,
+        currentMapId: this.props.mapId
     };
+    changeCurrentMapId = (mapId) => {
+        this.setState({currentMapId: mapId});
+    }
 
     render() {
         return(
@@ -84,9 +101,9 @@ class App extends React.Component{
                 <div id="content-wrap">
                     <PageHeader />
                     <TrailTileListContainer trailList={this.state.trails}/>
+                    <TrailMapContainerTrailForks mapId={this.state.currentMapId}/>
                 </div>
                 {/* <TrailMapContainer mapSrc="https://www.mtbproject.com/widget/map?favs=0&location=fixed&x=-10478086&y=5827237&z=5.5&h=1000"/> */}
-                <TrailMapContainerTrailForks mapId="3438"/>
             </div>
         );
     }
