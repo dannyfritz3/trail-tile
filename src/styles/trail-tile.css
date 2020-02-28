@@ -7,16 +7,20 @@
     border: 4px solid;
     /*border-radius: 10px;*/
     display: inline-block;
-    box-shadow: 0 0;
     width: 525px;
-    max-height: 100px;
-    transition: max-height 575ms ease-out;
+    user-select: none;
   } 
   
 .active-tile {
   box-shadow: 8px 8px 1px;
   max-height: 750px;
-  transition: max-height 575ms ease-in;
+  transition: max-height 500ms ease-in;
+}
+
+.inactive-tile {
+  box-shadow: 0 0;
+  max-height: 100px;
+  transition: max-height 500ms ease-out;
 }
 
 .trail-tile:hover {
@@ -28,7 +32,7 @@
   padding-top: 5px;
   display: inline-block;
 }
-  
+
 .condition-div {
   position: relative;
   display: block;
@@ -41,7 +45,7 @@
 .condition-heading {
   display: inline-block;
   position: relative;
-  top: 4px;
+  top: -15px;
   padding-left: 15px;
   font-size: 15px;
 }
@@ -49,8 +53,8 @@
 .condition-square {
   display: inline-block;
   width: 45px;
+  height: 45px;
   border: 4px solid;
-  /*border-radius: 7px;*/
 }
 
 .trail-heading {
@@ -76,15 +80,6 @@
   display: inline-block;
 }
 
-.segment-status {
-  padding-left: 350px;
-  color: red;
-}
-
-.segment-difficulty {
-  height: 25px; 
-}
-
 .map-div {
   display: block;
   border: 4px solid;
@@ -96,11 +91,12 @@
 .other-info {
   visibility: visible;
   margin: 15px;
+  padding-top: 20px;
   border-top: 3px black solid;
 }
 
 .last-updated-heading {
-  margin-top: 10px;
+  margin-top: -10px;
   font-size: smaller;
 }
 

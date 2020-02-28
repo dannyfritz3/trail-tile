@@ -8,7 +8,7 @@ import trail_data from './trail_data.json';
 
 const TrailTileList = (props) => (
 	<div>
-  	{props.trails.map(trail => <TrailTile {...trail}/>)}
+  	{props.trails.map(trail => <TrailTile changeMapEvent={props.changeMapEvent} {...trail}/>)}
 	</div>
 );
 
@@ -31,34 +31,22 @@ class TrailTileListContainer extends React.Component{
     render(props) {
         return (
             <div id="sidebar">
-                <TrailTileList trails={this.props.trailList} />
+                <TrailTileList trails={this.props.trailList} changeMapEvent={this.props.changeMapEvent}/>
             </div>
         )
     };
 }
 
-class TrailMapContainer extends React.Component{
-    render(props) {
-        return (
-            <div id="content">
-                <iframe title="map" id="masterMap" style={{width:'100%', maxWidth:'100vw', maxHeight:'100vh', 
-                height:'100%'}} frameBorder="0" scrolling="no" src={this.props.mapSrc}></iframe>
-            </div>
-        )
-    }
-}
-
 class TrailMapContainerTrailForks extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {height: 0, width: 0, currentMapId: "3438"};
+        this.state = {height: 0, width: 0};
     }
     componentDidMount() {
         var script = document.createElement("script");
         script.setAttribute("src", "https://es.pinkbike.org/ttl-86400/sprt/j/trailforks/widget.js");
         script.setAttribute("zoom", "-1");
         document.getElementsByTagName("head")[0].appendChild(script);
-        var widgetCheck = false;
         const height = document.getElementById('content-wrap').clientHeight;
         const width =document.getElementById('content').clientWidth;
         this.setState({ height: height, width: width });
@@ -67,8 +55,8 @@ class TrailMapContainerTrailForks extends React.Component {
     render(props) {
         return (
             <div id="content">
-                <div class="TrailforksWidgetMap" data-w={this.state.width + "px"} 
-                data-h={this.state.height + "px"} data-rid={this.state.currentMapId} 
+                <div id="TrailforksWidgetMap" className="TrailforksWidgetMap" data-w={this.state.width + "px"} 
+                data-h={this.state.height + "px"} data-rid={this.props.mapId} 
                 data-activitytype="1" data-maptype="trailforks" data-trailstyle="difficulty" data-controls="0" 
                 data-list="0" data-dml="1" data-layers="labels,poi,polygon,directory,region" data-z="" data-lat="" 
                 data-lon="" data-hideunsanctioned="0"></div>
@@ -87,20 +75,25 @@ class NavTab extends React.Component{
 }
 
 class App extends React.Component{
+    constructor(props){
+        super(props);
+        this.changeMapEvent = this.changeMapEvent.bind(this);
+    }
     state = {
         trails: trail_data,
-        currentMapId: this.props.mapId
+        currentMapId: "3438"
     };
-    changeCurrentMapId = (mapId) => {
-        this.setState({currentMapId: mapId});
+    changeMapEvent (event, rid) {
+        event.stopPropagation();
+        this.setState({currentMapId: rid});
+        ReactDOM.render(<TrailMapContainerTrailForks mapId={this.state.currentMapId}/>, document.getElementById("content"))
     }
-
     render() {
         return(
             <div id="page-container">
                 <div id="content-wrap">
                     <PageHeader />
-                    <TrailTileListContainer trailList={this.state.trails}/>
+                    <TrailTileListContainer trailList={this.state.trails} changeMapEvent={this.changeMapEvent}/>
                     <TrailMapContainerTrailForks mapId={this.state.currentMapId}/>
                 </div>
                 {/* <TrailMapContainer mapSrc="https://www.mtbproject.com/widget/map?favs=0&location=fixed&x=-10478086&y=5827237&z=5.5&h=1000"/> */}

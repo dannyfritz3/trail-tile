@@ -2,7 +2,6 @@ from bs4 import BeautifulSoup
 import requests
 import re
 import json
-from LocationResolverService import resolveTrailLocation
 from ParseTimestamp import parseTimestamp
 
 def main():
