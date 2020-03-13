@@ -37,6 +37,34 @@ class TrailTileListContainer extends React.Component{
     };
 }
 
+class ReiMtbProjectMap extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            myStyle: {
+                height: 0,
+                width: 0,
+                maxWidth: 0,}
+            };
+    }
+    componentDidMount() {
+        const height = document.getElementById('content-wrap').clientHeight;
+        const width = document.getElementById('content').clientWidth;
+        this.setState({ myStyle: {width: '100%', maxWidth: width, height: '100%', maxHeight: height} });
+    }
+    
+    render() {
+        return (
+            <div id="content">
+                <iframe id="map" title="mtb-project-iframe" style={this.state.myStyle}
+                    frameborder="0" scrolling="no"
+                    src={"https://www.mtbproject.com/widget/map?favs=0&location=fixed&x=-11676671&y=4822700&z=8.5&h=" + this.state.myStyle.maxHeight}>
+                </iframe>
+            </div>
+        )
+    }
+}
+
 class TrailMapContainerTrailForks extends React.Component {
     constructor(props) {
         super(props);
@@ -45,13 +73,11 @@ class TrailMapContainerTrailForks extends React.Component {
     componentDidMount() {
         var script = document.createElement("script");
         script.setAttribute("src", "https://es.pinkbike.org/ttl-86400/sprt/j/trailforks/widget.js");
-        script.setAttribute("zoom", "-1");
         document.getElementsByTagName("head")[0].appendChild(script);
         const height = document.getElementById('content-wrap').clientHeight;
         const width =document.getElementById('content').clientWidth;
         this.setState({ height: height, width: width });
-    };
-    
+    }
     render(props) {
         return (
             <div id="content">
@@ -86,7 +112,6 @@ class App extends React.Component{
     changeMapEvent (event, rid) {
         event.stopPropagation();
         this.setState({currentMapId: rid});
-        ReactDOM.render(<TrailMapContainerTrailForks mapId={this.state.currentMapId}/>, document.getElementById("content"))
     }
     render() {
         return(
@@ -94,7 +119,8 @@ class App extends React.Component{
                 <div id="content-wrap">
                     <PageHeader />
                     <TrailTileListContainer trailList={this.state.trails} changeMapEvent={this.changeMapEvent}/>
-                    <TrailMapContainerTrailForks mapId={this.state.currentMapId}/>
+                    {/* <TrailMapContainerTrailForks mapId={this.state.currentMapId}/> */}
+                    <ReiMtbProjectMap mapId={this.state.currentMapId}/>
                 </div>
                 {/* <TrailMapContainer mapSrc="https://www.mtbproject.com/widget/map?favs=0&location=fixed&x=-10478086&y=5827237&z=5.5&h=1000"/> */}
             </div>
