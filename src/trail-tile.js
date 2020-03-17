@@ -70,6 +70,17 @@ class BullitenPost extends React.Component {
     }
 }
 
+class BullitenPostForm extends React.Component {
+    render(props) {
+        return (
+            <form className="bulliten-post-form" onClick={(e) => e.stopPropagation()}>
+                <input className="bulliten-post-input" placeholder="Type here..." type="text"></input>
+                <input className="bulliten-post-button" type="submit"></input>
+            </form>
+        );
+    }
+}
+
 class TrailBullitenBoard extends React.Component {
     render(props) {
         return (
@@ -77,11 +88,12 @@ class TrailBullitenBoard extends React.Component {
                 <p className="adimin-post">
                     <div className="post-admin-box"><b>{this.props.trailAuthor}</b></div>  {this.props.trailComments}
                 </p>
-                <div id="messageBullitenBoard">
+                <div className="trail-bulliten-messages">
                     <BullitenPost postAuthor="Jimmy" postMessage="super radical today. I could't believe how many people went out today for the great trails." postTimestamp="Today 12:00pm" />
                     <BullitenPost postAuthor="Danny" postMessage="Great weather today for a ride." postTimestamp="Today 12:02pm" />
                     <BullitenPost postAuthor="Bill" postMessage="Would recommend getting out there now! Couple trouble spots on this route but not too bad." postTimestamp="Today 1:05pm" />
                 </div>
+                <BullitenPostForm />
             </div>
         );
     }

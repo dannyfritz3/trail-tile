@@ -157,7 +157,7 @@
   font-weight: bold;
 }
 
-#messageBullitenBoard {
+.trail-bulliten-messages {
   background-color: #ADAEAB;
   padding: 5px 5px 5px 5px;
   border: 3px solid #1E2019;
@@ -189,4 +189,43 @@
 
 .post-content {
   width: 100%;
+}
+
+.bulliten-post-form {
+  border-left: 3px solid #1E2019;
+  border-right: 3px solid #1E2019;
+  border-bottom: 3px solid #1E2019;
+  width: 100%;
+  height: 100%;
+}
+
+.bulliten-post-input {
+  display: inline-block;
+  background-color: #ADAEAB;
+  border: 3px solid #ADAEAB;
+  width: 85%;
+  height: 100%;
+  overflow-wrap: break-word;
+}
+.bulliten-post-input:focus {
+  outline: 0;
+}
+
+.bulliten-post-button {
+  background-color: #ADAEAB;
+  border-top: 1px solid #ADAEAB;
+  border-bottom: 2px solid #ADAEAB;
+  border-right: 1px solid #ADAEAB;
+  border-left: 1px solid #ADAEAB;
+  width: 15%;
+  float: right;
+}
+
+.bulliten-post-button:hover{
+  color: #ADAEAB;
+  background-color: #1E2019;
+  border-top: 1px solid #1E2019;
+  border-bottom: 2px solid #1E2019;
+  border-right: 1px solid #1E2019;
+  border-left: 1px solid #1E2019;
 }
