@@ -70,12 +70,12 @@ class BullitenPost extends React.Component {
     }
 }
 
-class TrailMessageBoard extends React.Component {
+class TrailBullitenBoard extends React.Component {
     render(props) {
         return (
-            <div>
-                <p id="adiminMessage">
-                    <div className="post-admin"><b>{this.props.trailAuthor}</b></div>  {this.props.trailComments}
+            <div className="trail-bulliten-board">
+                <p className="adimin-post">
+                    <div className="post-admin-box"><b>{this.props.trailAuthor}</b></div>  {this.props.trailComments}
                 </p>
                 <div id="messageBullitenBoard">
                     <BullitenPost postAuthor="Jimmy" postMessage="super radical today. I could't believe how many people went out today for the great trails." postTimestamp="Today 12:00pm" />
@@ -98,8 +98,8 @@ class TrailOtherInfo extends React.Component {
     render(props) {
         return (
             <div className="other-info">
-                <div className="TrailforksRegionInfo" data-w="477px" data-h="150px" data-rid={this.props.trailRid} data-counts="1" data-stats="0" data-title="0"></div>
-                <TrailMessageBoard trailAuthor={this.props.trailAuthor} trailComments={this.props.trailComments} />
+                <TrailBullitenBoard trailAuthor={this.props.trailAuthor} trailComments={this.props.trailComments} />
+                {/* <div className="TrailforksRegionInfo" data-w="477px" data-h="150px" data-rid={this.props.trailRid} data-counts="1" data-stats="0" data-title="0"></div> */}
             </div>
         )
     }
@@ -128,10 +128,10 @@ class TrailOtherInfo extends React.Component {
 //         return (
 //             <div class="outlook">
 //                 <p class="day-header">{this.props.weatherDay}</p>
-//                 <img class="weather-icon" 
+//                 <img class="weather-icon"
 //                 src="https://www.shareicon.net/data/128x128/2016/10/29/848790_weather_512x512.png"/>
 //                 <p class="temp-header">{this.props.weatherTemp}</p>
-//             </div> 
+//             </div>
 //         );
 //     }
 // }

@@ -157,31 +157,34 @@
   font-weight: bold;
 }
 
-#messageBullitenBoard{
+#messageBullitenBoard {
   background-color: #ADAEAB;
-  padding: 5px;
+  padding: 5px 5px 5px 5px;
+  border: 3px solid #1E2019;
 }
 
-.post-timestamp {
-  width: 20%;
-  float: right;
-  color: #1E2019;
-  font-size: 13px;
-  text-align: left;
-}
-
-.post-admin {
+.post-admin-box {
   display: inline;
   padding-left: 5px;
   padding-right: 5px;
-  padding-bottom: 3px;
+  padding-bottom: 1px;
   padding-top: 1px;
   background-color: #1E2019;
   color: #BFAE48;
 }
 
+
+.post-timestamp {
+  width: 15%;
+  float: right;
+  color: #1E2019;
+  font-size: 10px;
+  text-align: left;
+  padding-top: 5px;
+}
+
 .post-author-and-mesesage {
-  width: 80%;
+  width: 85%;
 }
 
 .post-content {
