@@ -44,8 +44,9 @@ class ReiMtbProjectMap extends React.Component {
             myStyle: {
                 height: 0,
                 width: 0,
-                maxWidth: 0,}
-            };
+                maxWidth: 0
+            }
+        };
     }
     componentDidMount() {
         const height = document.getElementById('content-wrap').clientHeight;
@@ -57,8 +58,8 @@ class ReiMtbProjectMap extends React.Component {
         return (
             <div id="content">
                 <iframe id="map" title="mtb-project-iframe" style={this.state.myStyle}
-                    frameborder="0" scrolling="no"
-                    src={"https://www.mtbproject.com/widget/map?favs=0&location=fixed&x=-11676671&y=4822700&z=8.5&h=" + this.state.myStyle.maxHeight}>
+                    frameBorder="0" scrolling="no"
+                    src={"https://www.mtbproject.com/widget/map?favs=0&location=fixed&x=-10532963&y=5821316&z=5.7&h=" + this.state.myStyle.maxHeight}>
                 </iframe>
             </div>
         )

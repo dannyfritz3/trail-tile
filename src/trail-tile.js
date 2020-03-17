@@ -1,49 +1,49 @@
 import React from 'react';
 import './styles/trail-tile.css';
 
-class TrailTitle extends React.Component{
+class TrailTitle extends React.Component {
     constructor() {
         super();
         this.changeMapHandler = this.changeMapHandler.bind(this);
-      }
-    
-      changeMapHandler(e, rid){
+    }
+
+    changeMapHandler(e, rid) {
         this.props.changeMapHandler(e, rid);
-      }
+    }
     render(props) {
         return (
             <div className="info-div">
-                <h2 className="trail-heading" style={this.props.trailName.length >= 18 ? {fontSize:"30px"} : {} }><b>{this.props.trailName}</b></h2>
+                <h2 className="trail-heading" style={this.props.trailName.length >= 18 ? { fontSize: "30px" } : {}}><b>{this.props.trailName}</b></h2>
                 <h4 className="location-heading">{this.props.trailLocation}</h4>
-                <img className="view-trail-icon" src="https://cdn2.iconfinder.com/data/icons/pittogrammi/142/61-512.png" 
-                alt="icon" onClick={(e) => this.changeMapHandler(e, this.props.trailRid)}/>
+                <img className="view-trail-icon" src="https://cdn2.iconfinder.com/data/icons/pittogrammi/142/61-512.png"
+                    alt="icon" onClick={(e) => this.changeMapHandler(e, this.props.trailRid)} />
             </div>
         )
     };
 }
 
-class TrailCondition extends React.Component{
-    constructor(props){
+class TrailCondition extends React.Component {
+    constructor(props) {
         super(props);
         this.determineConditionSquareColor = this.determineConditionSquareColor.bind(this);
-    }
+    } sd
 
     determineConditionSquareColor(condition) {
-        switch(condition){
-            case("Dry"): return "limegreen";
-            case("Tacky"): return "limegreen";
-            case("Fat Tires"): return "dodgerblue";
-            case("Packed"): return "dodgerblue";
-            case("Wet"): return "firebrick";
-            case("Closed"): return "firebrick";
-            default: return "firebrick";
+        switch (condition) {
+            case ("Dry"): return "#558B6E";
+            case ("Tacky"): return "#558B6E";
+            case ("Fat Tires"): return "#0EB1D2";
+            case ("Packed"): return "#0EB1D2";
+            case ("Wet"): return "#6F1D1B";
+            case ("Closed"): return "#6F1D1B";
+            default: return "#6F1D1B";
         }
     }
 
     render(props) {
         return (
             <div className="condition-div">
-                <div className="condition-square" style={{backgroundColor: this.determineConditionSquareColor(this.props.trailCondition)}}></div>
+                <div className="condition-square" style={{ backgroundColor: this.determineConditionSquareColor(this.props.trailCondition) }}></div>
                 <p className="condition-heading"><b>{this.props.trailCondition}</b></p>
                 <h6 className="last-updated-heading">Last Updated: <i>{this.props.trailTimestamp}</i></h6>
             </div>
@@ -51,12 +51,55 @@ class TrailCondition extends React.Component{
     }
 }
 
+class BullitenPost extends React.Component {
+    render(props) {
+        return (
+            <div className="post-content">
+                <div className="post-timestamp">
+                    <p>
+                        <i>{this.props.postTimestamp}</i>
+                    </p>
+                </div>
+                <div className="post-author-and-mesesage">
+                    <p>
+                        <b>{this.props.postAuthor}</b>  {this.props.postMessage}
+                    </p>
+                </div>
+            </div>
+        );
+    }
+}
+
+class TrailMessageBoard extends React.Component {
+    render(props) {
+        return (
+            <div>
+                <p id="adiminMessage">
+                    <div className="post-admin"><b>{this.props.trailAuthor}</b></div>  {this.props.trailComments}
+                </p>
+                <div id="messageBullitenBoard">
+                    <BullitenPost postAuthor="Jimmy" postMessage="super radical today. I could't believe how many people went out today for the great trails." postTimestamp="Today 12:00pm" />
+                    <BullitenPost postAuthor="Danny" postMessage="Great weather today for a ride." postTimestamp="Today 12:02pm" />
+                    <BullitenPost postAuthor="Bill" postMessage="Would recommend getting out there now! Couple trouble spots on this route but not too bad." postTimestamp="Today 1:05pm" />
+                </div>
+            </div>
+        );
+    }
+}
+
 class TrailOtherInfo extends React.Component {
+    componentDidMount() {
+        var style = "https://googledrive.com/host/1qxc4_kGJ66yZFrTrB-VYt5KnAGrNc63U/widget.css"
+        var script = document.createElement("script");
+        script.setAttribute("src", "https://es.pinkbike.org/ttl-86400/sprt/j/trailforks/widget.js");
+        document.getElementsByTagName("head")[0].appendChild(script);
+    }
+
     render(props) {
         return (
             <div className="other-info">
                 <div className="TrailforksRegionInfo" data-w="477px" data-h="150px" data-rid={this.props.trailRid} data-counts="1" data-stats="0" data-title="0"></div>
-                <p><b>{this.props.trailAuthor}</b> <i>{this.props.trailComments}</i></p>
+                <TrailMessageBoard trailAuthor={this.props.trailAuthor} trailComments={this.props.trailComments} />
             </div>
         )
     }
@@ -93,28 +136,28 @@ class TrailOtherInfo extends React.Component {
 //     }
 // }
 
-class TrailTile extends React.Component{
+class TrailTile extends React.Component {
     constructor(props) {
         super(props)
         this.clickTrailTile = this.clickTrailTile.bind(this);
     }
-        clickTrailTile(event) {
-            var el = event.currentTarget;
-            if(!el.classList.contains("active-tile")){
-                el.classList.remove("inactive-tile");
-                el.classList.add("active-tile");
-            } else {
-                el.classList.remove("active-tile");
-                el.classList.add("inactive-tile");
-            }
+    clickTrailTile(event) {
+        var el = event.currentTarget;
+        if (!el.classList.contains("active-tile")) {
+            el.classList.remove("inactive-tile");
+            el.classList.add("active-tile");
+        } else {
+            el.classList.remove("active-tile");
+            el.classList.add("inactive-tile");
         }
+    }
 
     render(props) {
-        return(
+        return (
             <div className="trail-tile inactive-tile" onClick={(e) => this.clickTrailTile(e)}>
-                <TrailTitle trailName={this.props.name} trailLocation={this.props.location} trailRid={this.props.trailforksMapId} changeMapHandler={this.props.changeMapEvent}/>
-                <TrailCondition trailCondition={this.props.condition} trailTimestamp={this.props.parsedTimestamp}/>
-                <TrailOtherInfo trailComments={this.props.comments} trailAuthor={this.props.username} trailRid={this.props.trailforksMapId}/>
+                <TrailTitle trailName={this.props.name} trailLocation={this.props.location} trailRid={this.props.trailforksMapId} changeMapHandler={this.props.changeMapEvent} />
+                <TrailCondition trailCondition={this.props.condition} trailTimestamp={this.props.parsedTimestamp} />
+                <TrailOtherInfo trailComments={this.props.comments} trailAuthor={this.props.username} trailRid={this.props.trailforksMapId} />
                 {/* <TrailWeatherOutlook /> */}
             </div>
         );
