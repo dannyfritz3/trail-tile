@@ -1,5 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from 'react-router-dom';
 import './styles/index.css';
 import * as serviceWorker from './serviceWorker';
 import TrailTile from './trail-tile.js';
@@ -17,10 +23,9 @@ class PageHeader extends React.Component{
         return (
             <div id="header">
                 <ul className="nav-tabs">
-                    <p id="logo">Minnesota Off-Road Cyclists</p>
+                    <a id="logo" href="/">Minnesota Off-Road Cyclists</a>
+                    <NavTab navTabTitle="Login" linkRef="#login"/>
                     <NavTab navTabTitle="About" linkRef="#about"/>
-                    <NavTab navTabTitle="Community" linkRef="#community"/>
-                    <NavTab navTabTitle="Events" linkRef="#events"/>
                 </ul>
             </div>
         )
@@ -129,7 +134,7 @@ class App extends React.Component{
     }
 }
 
-export default TrailMapContainerTrailForks;
+export default App;
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

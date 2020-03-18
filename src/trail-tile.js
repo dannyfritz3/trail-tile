@@ -10,6 +10,7 @@ class TrailTitle extends React.Component {
     changeMapHandler(e, rid) {
         this.props.changeMapHandler(e, rid);
     }
+
     render(props) {
         return (
             <div className="info-div">
@@ -26,7 +27,7 @@ class TrailCondition extends React.Component {
     constructor(props) {
         super(props);
         this.determineConditionSquareColor = this.determineConditionSquareColor.bind(this);
-    } sd
+    }
 
     determineConditionSquareColor(condition) {
         switch (condition) {
@@ -71,10 +72,28 @@ class BullitenPost extends React.Component {
 }
 
 class BullitenPostForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            inputMessage: ""
+        };
+        this.inputChangeHandler = this.inputChangeHandler.bind(this);
+        this.formSubmitHandler = this.formSubmitHandler.bind(this);
+    }
+
+    inputChangeHandler(event) {
+        this.setState({inputMessage: event.target.value})
+    }
+
+    formSubmitHandler(event) {
+        event.preventDefault();
+        alert("You are submitting: " + this.state.inputMessage);
+    }
+
     render(props) {
         return (
-            <form className="bulliten-post-form" onClick={(e) => e.stopPropagation()}>
-                <input className="bulliten-post-input" placeholder="Type here..." type="text"></input>
+            <form className="bulliten-post-form" onSubmit={this.formSubmitHandler}>
+                <input className="bulliten-post-input" onChange={this.inputChangeHandler} placeholder="Type here..." type="text"></input>
                 <input className="bulliten-post-button" type="submit"></input>
             </form>
         );
@@ -84,7 +103,7 @@ class BullitenPostForm extends React.Component {
 class TrailBullitenBoard extends React.Component {
     render(props) {
         return (
-            <div className="trail-bulliten-board">
+            <div className="trail-bulliten-board" onClick={(event) => event.stopPropagation()}>
                 <p className="adimin-post">
                     <div className="post-admin-box"><b>{this.props.trailAuthor}</b></div>  {this.props.trailComments}
                 </p>
@@ -100,12 +119,12 @@ class TrailBullitenBoard extends React.Component {
 }
 
 class TrailOtherInfo extends React.Component {
-    componentDidMount() {
-        var style = "https://googledrive.com/host/1qxc4_kGJ66yZFrTrB-VYt5KnAGrNc63U/widget.css"
-        var script = document.createElement("script");
-        script.setAttribute("src", "https://es.pinkbike.org/ttl-86400/sprt/j/trailforks/widget.js");
-        document.getElementsByTagName("head")[0].appendChild(script);
-    }
+    // componentDidMount() {
+    //     var style = "https://googledrive.com/host/1qxc4_kGJ66yZFrTrB-VYt5KnAGrNc63U/widget.css"
+    //     var script = document.createElement("script");
+    //     script.setAttribute("src", "https://es.pinkbike.org/ttl-86400/sprt/j/trailforks/widget.js");
+    //     document.getElementsByTagName("head")[0].appendChild(script);
+    // }
 
     render(props) {
         return (

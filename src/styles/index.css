@@ -36,6 +36,11 @@ body {
   padding: 15px 0px 15px 20px;
   color: #BFAE48;
   top: -5px;
+  text-decoration: none;
+}
+
+#logo:hover {
+  color: #A49640;
 }
 
 .nav-tabs {
