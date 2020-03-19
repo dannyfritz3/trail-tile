@@ -12,6 +12,16 @@ import TrailTile from './trail-tile.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import trail_data from './trail_data.json';
 
+const routing = (
+    <Router>
+        <div>
+            <Router path="/" component={""} />
+            <Router path="/about" component={""}/>
+            <Router path="/login" component={""}/>
+        </div>
+    </Router>
+)
+
 const TrailTileList = (props) => (
 	<div>
   	{props.trails.map(trail => <TrailTile changeMapEvent={props.changeMapEvent} {...trail}/>)}
@@ -28,6 +38,15 @@ class PageHeader extends React.Component{
                     <NavTab navTabTitle="About" linkRef="#about"/>
                 </ul>
             </div>
+        )
+    };
+}
+
+class NavTab extends React.Component{
+    render(props) {
+        return (
+        <li className="nav-tab active-left" style={{float:'right'}}><a className="nav-tab-link" 
+        href={this.props.linkRef}>{this.props.navTabTitle}</a></li>
         )
     };
 }
@@ -97,15 +116,6 @@ class TrailMapContainerTrailForks extends React.Component {
     }
 }
 
-class NavTab extends React.Component{
-    render(props) {
-        return (
-        <li className="nav-tab active-left" style={{float:'right'}}><a className="nav-tab-link" 
-        href={this.props.linkRef}>{this.props.navTabTitle}</a></li>
-        )
-    };
-}
-
 class App extends React.Component{
     constructor(props){
         super(props);
@@ -122,8 +132,8 @@ class App extends React.Component{
     render() {
         return(
             <div id="page-container">
+                <PageHeader />
                 <div id="content-wrap">
-                    <PageHeader />
                     <TrailTileListContainer trailList={this.state.trails} changeMapEvent={this.changeMapEvent}/>
                     {/* <TrailMapContainerTrailForks mapId={this.state.currentMapId}/> */}
                     <ReiMtbProjectMap mapId={this.state.currentMapId}/>

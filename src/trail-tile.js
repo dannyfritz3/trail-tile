@@ -14,7 +14,7 @@ class TrailTitle extends React.Component {
     render(props) {
         return (
             <div className="info-div">
-                <h2 className="trail-heading" style={this.props.trailName.length >= 18 ? { fontSize: "30px" } : {}}><b>{this.props.trailName}</b></h2>
+                <h2 className="trail-heading"><b>{this.props.trailName === "Cottage Grove Bike Park" ? "Cottage Grove" : this.props.trailName}</b></h2>
                 <h4 className="location-heading">{this.props.trailLocation}</h4>
                 <img className="view-trail-icon" src="https://cdn2.iconfinder.com/data/icons/pittogrammi/142/61-512.png"
                     alt="icon" onClick={(e) => this.changeMapHandler(e, this.props.trailRid)} />
@@ -33,11 +33,11 @@ class TrailCondition extends React.Component {
         switch (condition) {
             case ("Dry"): return "#558B6E";
             case ("Tacky"): return "#558B6E";
-            case ("Fat Tires"): return "#0EB1D2";
+            case ("Fat Tires"): return "#0B4F6C";
             case ("Packed"): return "#0EB1D2";
-            case ("Wet"): return "#6F1D1B";
-            case ("Closed"): return "#6F1D1B";
-            default: return "#6F1D1B";
+            case ("Wet"): return "#A4243B";
+            case ("Closed"): return "#A4243B";
+            default: return "#A4243B";
         }
     }
 
@@ -186,8 +186,10 @@ class TrailTile extends React.Component {
     render(props) {
         return (
             <div className="trail-tile inactive-tile" onClick={(e) => this.clickTrailTile(e)}>
-                <TrailTitle trailName={this.props.name} trailLocation={this.props.location} trailRid={this.props.trailforksMapId} changeMapHandler={this.props.changeMapEvent} />
-                <TrailCondition trailCondition={this.props.condition} trailTimestamp={this.props.parsedTimestamp} />
+                <div className="trail-tile-header">
+                    <TrailTitle trailName={this.props.name} trailLocation={this.props.location} trailRid={this.props.trailforksMapId} changeMapHandler={this.props.changeMapEvent} />
+                    <TrailCondition trailCondition={this.props.condition} trailTimestamp={this.props.parsedTimestamp} />
+                </div>
                 <TrailOtherInfo trailComments={this.props.comments} trailAuthor={this.props.username} trailRid={this.props.trailforksMapId} />
                 {/* <TrailWeatherOutlook /> */}
             </div>

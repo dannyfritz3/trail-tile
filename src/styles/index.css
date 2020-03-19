@@ -33,7 +33,7 @@ body {
   font-family: 'Bungee', cursive;
   position: relative;
   font-size: 30px;
-  padding: 15px 0px 15px 20px;
+  padding: 15px 0px 15px 15px;
   color: #BFAE48;
   top: -5px;
   text-decoration: none;
@@ -41,6 +41,7 @@ body {
 
 #logo:hover {
   color: #A49640;
+  cursor: pointer;
 }
 
 .nav-tabs {

@@ -11,7 +11,15 @@
     user-select: none;
     background-color: #C2C2C0;
   } 
-  
+
+.trail-tile:hover {
+    box-shadow: 8px 8px 1px;
+}
+
+.trail-tile-header {
+  cursor: pointer;
+}
+
 .active-tile {
   box-shadow: 8px 8px 1px;
   max-height: 750px;
@@ -22,10 +30,6 @@
   box-shadow: 0 0;
   max-height: 100px;
   transition: max-height 500ms ease-out;
-}
-
-.trail-tile:hover {
-  box-shadow: 8px 8px 1px;
 }
   
 .info-div {
@@ -157,6 +161,10 @@
   font-weight: bold;
 }
 
+.trail-bulliten-board{
+  cursor: default;
+}
+
 .trail-bulliten-messages {
   background-color: #ADAEAB;
   padding: 5px 5px 5px 5px;
@@ -172,7 +180,6 @@
   background-color: #1E2019;
   color: #BFAE48;
 }
-
 
 .post-timestamp {
   width: 15%;
