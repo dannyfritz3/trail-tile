@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/trail-tile.css';
+import '../styles/TrailTile.css';
 
 class TrailTitle extends React.Component {
     constructor() {
