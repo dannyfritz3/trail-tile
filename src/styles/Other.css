@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bungee&display=swap');
+
+#about-header {
+    text-align: center;
+    padding: 50px;
+    font-weight: bold;
+    font-family: 'Staatliches', cursive;
+}
+
+#login-header {
+    text-align: center;
+    padding: 50px 10px 25px 10px;
+    font-family: 'Staatliches', cursive;
+}
+
+#signup-header {
+    text-align: center;
+    padding: 50px 10px 25px 10px;
+    font-family: 'Staatliches', cursive;
+}
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+#login-container {
+    position: relative;
+    margin: auto;
+    display: block;
+}
+
+#signup-container {
+    margin: auto;
+    display: block;
+}
+
+#login-input-box {
+    padding: 10px;
+    margin-top: 25px;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    background-color: #C2C2C0;
+    border: 3px solid #1E2019;
+    width: 20%;
+    height: 100%;
+    overflow-wrap: break-word;
+}
+
+#login-input-box:focus {
+    outline-color: #BFAE48;
+    outline-width: 5px;
+}
+
+#login-button {
+    background-color: #C2C2C0;
+    border: 3px solid #1E2019;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    margin-top: 25px;
+    width: 15%;
+    font-weight: bold;
+}
+
+#login-button:hover{
+    color: #C2C2C0;
+    background-color: #1E2019;
+  }
+  
+  #login-button:focus {
+    outline: none;
+  }

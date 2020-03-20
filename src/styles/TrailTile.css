@@ -1,0 +1,243 @@
+.trail-tile {
+  font-family: 'Open Sans', sans-serif;
+    overflow: hidden;
+    margin: 5px;
+    padding: 0px 5px 5px;
+    border: 4px solid #1E2019;
+    /*border-radius: 10px;*/
+    display: inline-block;
+    width: 525px;
+    user-select: none;
+    background-color: #C2C2C0;
+  } 
+
+.trail-tile:hover {
+    box-shadow: 8px 8px 1px;
+}
+
+.trail-tile-header .active-tile {
+  cursor: pointer;
+}
+
+.active-tile {
+  box-shadow: 8px 8px 1px;
+  max-height: 750px;
+  transition: max-height 500ms ease-in;
+}
+
+.inactive-tile {
+  box-shadow: 0 0;
+  max-height: 100px;
+  transition: max-height 500ms ease-out;
+}
+  
+.info-div {
+  max-width: 300px;
+  padding-top: 5px;
+  display: inline-block;
+}
+
+.condition-div {
+  position: relative;
+  display: block;
+  margin-top: 10px;
+  right: 25px;
+  float: right;
+  width: 180px;
+}
+
+.condition-heading {
+  display: inline-block;
+  position: relative;
+  top: -5px;
+  padding-left: 15px;
+  font-size: 15px;
+  width: 100px;
+  color: #1E2019;
+}
+
+.condition-square {
+  display: inline-block;
+  width: 45px;
+  height: 45px;
+  border: 4px solid;
+}
+
+.trail-heading {
+  position: relative;
+  display: block;
+  color: #1E2019;
+  overflow: hidden;
+}
+
+.location-heading {
+  color: #1E2019;
+  position: relative;
+  display: inline-block;
+  padding-left: 6px;
+}
+
+.info-dropdown {
+  text-align: left;
+  display: grid;
+  margin: 7px;
+}
+
+.info-grid h6{
+  display: inline-block;
+}
+
+.map-div {
+  display: block;
+  border: 4px solid;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+}
+
+.other-info {
+  visibility: visible;
+  margin: 15px;
+  padding-top: 20px;
+  border-top: 3px black solid;
+}
+
+.last-updated-heading {
+  margin-top: -10px;
+  font-size: smaller;
+}
+
+.trail-tile:hover .view-trail-icon {
+  visibility: visible;
+}
+
+.view-trail-icon:hover {
+  transform: scale(1.2);
+  opacity: 1;
+  cursor: pointer;
+}
+
+.view-trail-icon {
+  visibility: hidden;
+  position: absolute;
+  display: inline-block;
+  width: 30px;
+  margin-left: 15px;
+  opacity: 0.75;
+}
+
+.weather-div {
+  margin-top: 15px;  
+}
+
+.outlook {
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  text-align: center;
+}
+
+.day-header {
+  margin: 0;
+}
+
+.temp-header {
+  margin: 0;
+}
+
+.weather-icon {
+  height: 50px;
+}
+
+.weather-outlook-div {
+  /*border: 2px solid black;*/
+  /*border-radius: 10px;*/
+  width: 522px;
+  background-color: #FDFDFD;
+}
+
+.today {
+  font-weight: bold;
+}
+
+.trail-bulliten-board{
+  cursor: default;
+}
+
+.trail-bulliten-messages {
+  background-color: #ADAEAB;
+  padding: 5px 5px 5px 5px;
+  border: 3px solid #1E2019;
+}
+
+.post-admin-box {
+  display: inline;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 1px;
+  padding-top: 1px;
+  background-color: #1E2019;
+  color: #BFAE48;
+}
+
+.post-timestamp {
+  width: 15%;
+  float: right;
+  color: #1E2019;
+  font-size: 10px;
+  text-align: left;
+  padding-top: 5px;
+}
+
+.post-author-and-mesesage {
+  width: 85%;
+}
+
+.post-content {
+  width: 100%;
+}
+
+.bulliten-post-form {
+  border-left: 3px solid #1E2019;
+  border-right: 3px solid #1E2019;
+  border-bottom: 3px solid #1E2019;
+  width: 100%;
+  height: 100%;
+}
+
+.bulliten-post-input {
+  display: inline-block;
+  background-color: #ADAEAB;
+  border: 3px solid #ADAEAB;
+  width: 85%;
+  height: 100%;
+  overflow-wrap: break-word;
+}
+
+.bulliten-post-input:focus {
+  outline: 0;
+}
+
+.bulliten-post-button {
+  background-color: #ADAEAB;
+  border-top: 1px solid #ADAEAB;
+  border-bottom: 2px solid #ADAEAB;
+  border-right: 1px solid #ADAEAB;
+  border-left: 1px solid #ADAEAB;
+  width: 15%;
+  float: right;
+  font-weight: bold;
+}
+
+.bulliten-post-button:hover{
+  color: #ADAEAB;
+  background-color: #1E2019;
+  border-top: 1px solid #1E2019;
+  border-bottom: 2px solid #1E2019;
+  border-right: 1px solid #1E2019;
+  border-left: 1px solid #1E2019;
+}
+
+.bulliten-post-button:focus {
+  outline: none;
+}
