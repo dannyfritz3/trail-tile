@@ -23,7 +23,10 @@ def scrape_for_trail_data():
             if item_text.endswith('\r\n\n\n'):
                 raw_trail_info.append(item.text)
 
-    keys = ["name", "condition", "comments", "username", "timestamp", "parsedTimestamp", "location", "trailforksMapId"]
+    keys = ["name", "condition", "comments", "username", 
+            "timestamp", "parsedTimestamp", "location", 
+            "trailforksMapId", "reimtb-x", "reimtb-y"]
+
     with open('./utility-data/static_location_data.json') as infile:
         location_data = json.load(infile);
 
@@ -36,6 +39,8 @@ def scrape_for_trail_data():
             parsed_data_obj.append(parseTimestamp(parsed_data_obj[4]))
             parsed_data_obj.append(location_data[parsed_data_obj[0]].get("location"))
             parsed_data_obj.append(location_data[parsed_data_obj[0]].get("data-rid"))
+            parsed_data_obj.append(location_data[parsed_data_obj[0]].get("reimtb-x"))
+            parsed_data_obj.append(location_data[parsed_data_obj[0]].get("reimtb-y"))
             parsed_data_obj = dict(zip(keys, parsed_data_obj))
             parsed_trail_info.append(parsed_data_obj)
 

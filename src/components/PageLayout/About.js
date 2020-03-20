@@ -1,10 +1,11 @@
 import React from 'react';
+import "../../styles/Other.css"
 
 class About extends React.Component {
     render(props) {
         return (
-            <div>
-                <h1>Test About</h1>
+            <div id="about">
+                <h1 id="about-header">Welcome</h1>
             </div>
         )
     }

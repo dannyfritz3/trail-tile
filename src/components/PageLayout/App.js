@@ -1,9 +1,10 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Route } from 'react-router-dom';
-import '../styles/index.css';
-import * as serviceWorker from '../serviceWorker';
+import '../../styles/App.css';
+import * as serviceWorker from '../../serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import trail_data from '../trail_data.json';
+import trail_data from '../../trail_data.json';
 import PageHeader from './PageHeader';
 import TrailTileListContainer from './TrailTileListContainer';
 import ReiMtbProjectMap from './ReiMtbProjectMap';
@@ -17,11 +18,17 @@ class App extends React.Component {
     }
     state = {
         trails: trail_data,
-        currentMapId: "3438"
+        currentMapId: "3438",
+        currentMapX: "-10532963",
+        currentMapY: "5821316",
+        currentMapZ: "5.7"
     };
-    changeMapEvent (event, rid) {
+    changeMapEvent (event, reimtbX, reimtbY) {
         event.stopPropagation();
-        this.setState({currentMapId: rid});
+        this.setState({currentMapX: reimtbX,
+                        currentMapY: reimtbY,
+                        currentMapZ: 10.0});
+        ReactDOM.render(<ReiMtbProjectMap />, document.getElementById('map-container'));
     }
     render() {
         return(
@@ -36,7 +43,7 @@ class App extends React.Component {
                     </Route>
                     <Route exact path="/">
                         <TrailTileListContainer trailList={this.state.trails} changeMapEvent={this.changeMapEvent}/>
-                        <ReiMtbProjectMap mapId={this.state.currentMapId}/>
+                        <ReiMtbProjectMap reimtbX={this.state.currentMapX} reimtbY={this.state.currentMapY} reimtbZ={this.state.currentMapZ} />
                     </Route>
                 </div>
             </div>

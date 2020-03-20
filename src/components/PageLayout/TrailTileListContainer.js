@@ -1,5 +1,5 @@
 import React from 'react';
-import TrailTile from './TrailTile';
+import TrailTile from '../TrailTile/TrailTile';
 
 const TrailTileList = (props) => (
 	<div>
