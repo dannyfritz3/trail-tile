@@ -3,7 +3,7 @@ import TrailTile from '../TrailTile/TrailTile';
 
 const TrailTileList = (props) => (
 	<div>
-  	{props.trails.map(trail => <TrailTile changeMapEvent={props.changeMapEvent} {...trail}/>)}
+  	    {props.trails.map(trail => <TrailTile key={trail.key} changeMapEvent={props.changeMapEvent} {...trail}/>)}
 	</div>
 );
 

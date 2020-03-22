@@ -38,6 +38,7 @@ body {
   color: #BFAE48;
   top: -5px;
   text-decoration: none;
+  text-shadow: 4px 4px #454545;
 }
 
 #logo:hover {
@@ -152,7 +153,7 @@ body {
 #map-container {
   height: 100%;
   width: 100%;
-  filter: brightness(0.8);
+  filter: brightness(1.0);
 }
 
 #map {

@@ -1,34 +1,33 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Route } from 'react-router-dom';
-import '../../styles/App.css';
-import * as serviceWorker from '../../serviceWorker';
+import './styles/App.css';
+import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import trail_data from '../../trail_data.json';
-import PageHeader from './PageHeader';
-import TrailTileListContainer from './TrailTileListContainer';
-import ReiMtbProjectMap from './ReiMtbProjectMap';
-import About from './About';
-import Login from './Login';
+import trail_data from './trail_data.json';
+import PageHeader from './components/PageLayout/PageHeader';
+import TrailTileListContainer from './components/PageLayout/TrailTileListContainer';
+import ReiMtbProjectMap from './components/PageLayout/ReiMtbProjectMap';
+import About from './components/PageLayout/About';
+import Login from './components/PageLayout/Login';
 
 class App extends React.Component {
     constructor(props){
         super(props);
+        this.state = {
+            trails: trail_data
+        };
         this.changeMapEvent = this.changeMapEvent.bind(this);
     }
-    state = {
-        trails: trail_data,
-        currentMapId: "3438",
-        currentMapX: "-10532963",
-        currentMapY: "5821316",
-        currentMapZ: "5.7"
-    };
     changeMapEvent (event, reimtbX, reimtbY) {
         event.stopPropagation();
-        this.setState({currentMapX: reimtbX,
-                        currentMapY: reimtbY,
-                        currentMapZ: 10.0});
-        ReactDOM.render(<ReiMtbProjectMap />, document.getElementById('map-container'));
+        var contentHeight = document.getElementById('content-wrap').clientHeight;
+        var mapSrc = "https://www.mtbproject.com/widget/map?favs=0&location=fixed"+ 
+        "&x="+ reimtbX +
+        "&y="+ reimtbY +
+        "&z=12.2"+
+        "&h="+ contentHeight;
+
+        document.getElementById("map").src = mapSrc;
     }
     render() {
         return(
@@ -43,7 +42,7 @@ class App extends React.Component {
                     </Route>
                     <Route exact path="/">
                         <TrailTileListContainer trailList={this.state.trails} changeMapEvent={this.changeMapEvent}/>
-                        <ReiMtbProjectMap reimtbX={this.state.currentMapX} reimtbY={this.state.currentMapY} reimtbZ={this.state.currentMapZ} />
+                        <ReiMtbProjectMap />
                     </Route>
                 </div>
             </div>

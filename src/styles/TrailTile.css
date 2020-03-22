@@ -25,6 +25,10 @@
   transition: max-height 500ms ease-in;
 }
 
+.active-tile > .condition-div {
+  box-shadow: 3px 3px #484848;
+}
+
 .inactive-tile {
   box-shadow: 0 0;
   max-height: 100px;
@@ -44,12 +48,12 @@
   right: 25px;
   float: right;
   width: 180px;
-}
+} 
 
 .condition-heading {
   display: inline-block;
   position: relative;
-  top: -5px;
+  top: -15px;
   padding-left: 15px;
   font-size: 15px;
   width: 100px;
@@ -165,19 +169,27 @@
 }
 
 .trail-bulliten-messages {
+  margin-top: 10px;
   background-color: #ADAEAB;
   padding: 5px 5px 5px 5px;
   border: 3px solid #1E2019;
 }
 
-.post-admin-box {
+.post-admin-author {
   display: inline;
   padding-left: 5px;
   padding-right: 5px;
   padding-bottom: 1px;
   padding-top: 1px;
+  margin-right: 5px;
   background-color: #1E2019;
+  box-shadow: 3px 3px #484848;
   color: #BFAE48;
+}
+
+.post-admin-text {
+  display: inline;
+  padding-left: 5px;
 }
 
 .post-timestamp {
@@ -216,6 +228,10 @@
 
 .bulliten-post-input:focus {
   outline: 0;
+}
+
+.bulliten-post-input:focus > .bulliten-post-form {
+  box-shadow: 3px 3px #484848;
 }
 
 .bulliten-post-button {

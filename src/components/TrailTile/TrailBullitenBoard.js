@@ -7,7 +7,8 @@ class TrailBullitenBoard extends React.Component {
         return (
             <div className="trail-bulliten-board" onClick={(event) => event.stopPropagation()}>
                 <div className="adimin-post">
-                    <div className="post-admin-box"><b>{this.props.trailAuthor}</b></div>  {this.props.trailComments}
+                    <div className="post-admin-author"><b>{this.props.trailAuthor}</b></div>
+                    <div className="post-admin-text">{this.props.trailComments}</div>
                 </div>
                 <div className="trail-bulliten-messages">
                     <BullitenPost postAuthor="Jimmy" postMessage="super radical today. I could't believe how many people went out today for the great trails." postTimestamp="Today 12:00pm" />

@@ -33,15 +33,7 @@ class Login extends React.Component {
 
     render(props) {
         return (
-            <div id="page-container">
-                <div id="login-container">
-                    <form onSubmit={this.formLoginHandler}>
-                        <h1 id="login-header">Login</h1>
-                        <input id="login-input-box" onChange={this.inputUsernameChangeHandler} placeholder="Username" type="text"></input>
-                        <input id="login-input-box" onChange={this.inputPasswordChangeHandler} placeholder="Password" type="password"></input>
-                        <input id="login-button" type="submit" value="Log In" />
-                    </form>
-                </div>
+            <div id="login-page-container">
                 <div id="signup-container">
                     <form onSubmit={this.formSignupHandler}>
                         <h1 id="signup-header">Signup</h1>
@@ -51,6 +43,14 @@ class Login extends React.Component {
                         <input id="login-input-box" onChange={this.inputPasswordChangeHandler} placeholder="Password" type="password"></input>
                         <input id="login-input-box" onChange={this.inputPasswordChangeHandler} placeholder="Confirm Password" type="password"></input>
                         <input id="login-button" type="submit" value="Sign Up" />
+                    </form>
+                </div>
+                <div id="login-container">
+                    <form onSubmit={this.formLoginHandler}>
+                        <h1 id="login-header">Login</h1>
+                        <input id="login-input-box" onChange={this.inputUsernameChangeHandler} placeholder="Username" type="text"></input>
+                        <input id="login-input-box" onChange={this.inputPasswordChangeHandler} placeholder="Password" type="password"></input>
+                        <input id="login-button" type="submit" value="Log In" />
                     </form>
                 </div>
             </div>

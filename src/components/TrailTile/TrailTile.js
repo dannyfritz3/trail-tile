@@ -6,7 +6,10 @@ import TrailOtherInfo from './TrailOtherInfo';
 
 class TrailTile extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
+        this.state = {
+            posts: []
+        }
         this.clickTrailTile = this.clickTrailTile.bind(this);
     }
     clickTrailTile(event) {
@@ -25,7 +28,7 @@ class TrailTile extends React.Component {
             <div className="trail-tile inactive-tile" onClick={(e) => this.clickTrailTile(e)}>
                 <div className="trail-tile-header">
                     <TrailTitle trailName={this.props.name} trailLocation={this.props.location} reimtbX={this.props.reimtbX} reimtbY={this.props.reimtbY} changeMapHandler={this.props.changeMapEvent} />
-                    <TrailCondition trailCondition={this.props.condition} trailTimestamp={this.props.parsedTimestamp} />
+                    <TrailCondition trailCondition={this.props.condition === "Melting Do Not Ride" ? "Melting" : this.props.condition} trailTimestamp={this.props.parsedTimestamp} />
                 </div>
                 <TrailOtherInfo trailComments={this.props.comments} trailAuthor={this.props.username} trailRid={this.props.trailforksMapId} />
                 {/* <TrailWeatherOutlook /> */}
