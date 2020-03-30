@@ -3,21 +3,24 @@ import { Route } from 'react-router-dom';
 import './styles/App.css';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import trail_data from './trail_data.json';
+//import trail_data from './trail_data.json';
 import PageHeader from './components/PageLayout/PageHeader';
 import TrailTileListContainer from './components/PageLayout/TrailTileListContainer';
 import ReiMtbProjectMap from './components/PageLayout/ReiMtbProjectMap';
 import About from './components/PageLayout/About';
 import Login from './components/PageLayout/Login';
+import axios from 'axios';
 
 class App extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            trails: trail_data
+            isLoaded: false,
+            trails: []
         };
         this.changeMapEvent = this.changeMapEvent.bind(this);
     }
+
     changeMapEvent (event, reimtbX, reimtbY) {
         event.stopPropagation();
         var contentHeight = document.getElementById('content-wrap').clientHeight;
@@ -29,6 +32,19 @@ class App extends React.Component {
 
         document.getElementById("map").src = mapSrc;
     }
+
+    componentDidMount() {
+        axios.get('http://localhost:4000/trails').then((response) => {
+            if (response.status >= 400) {
+                throw new Error("Bad response from server");
+            };
+            this.setState({trails: response.data});
+        }).catch(function(err) {
+            this.setState({trails: err})
+            console.log(err)
+        });
+    }
+
     render() {
         return(
             <div id="page-container">

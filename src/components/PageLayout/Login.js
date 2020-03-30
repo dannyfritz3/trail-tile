@@ -37,22 +37,33 @@ class Login extends React.Component {
                 <div id="signup-container">
                     <form onSubmit={this.formSignupHandler}>
                         <h1 id="signup-header">Signup</h1>
-                        <input id="login-input-box" onChange={this.inputUsernameChangeHandler} placeholder="Email" type="text"></input>
-                        <input id="login-input-box" onChange={this.inputPasswordChangeHandler} placeholder="Confirm Email" type="text"></input>
-                        <input id="login-input-box" onChange={this.inputUsernameChangeHandler} placeholder="Username" type="text"></input>
-                        <input id="login-input-box" onChange={this.inputPasswordChangeHandler} placeholder="Password" type="password"></input>
-                        <input id="login-input-box" onChange={this.inputPasswordChangeHandler} placeholder="Confirm Password" type="password"></input>
+                        <LoginField changeHandler={this.inputPasswordChangeHandler} placeholder="Email" type="text" />
+                        <LoginField changeHandler={this.inputPasswordChangeHandler} placeholder="Confirm Email" type="text" />
+                        <LoginField changeHandler={this.inputPasswordChangeHandler} placeholder="Username" type="text" />
+                        <LoginField changeHandler={this.inputPasswordChangeHandler} placeholder="Password" type="password" />
+                        <LoginField changeHandler={this.inputPasswordChangeHandler} placeholder="Confirm Password" type="password" />
                         <input id="login-button" type="submit" value="Sign Up" />
                     </form>
                 </div>
                 <div id="login-container">
                     <form onSubmit={this.formLoginHandler}>
                         <h1 id="login-header">Login</h1>
-                        <input id="login-input-box" onChange={this.inputUsernameChangeHandler} placeholder="Username" type="text"></input>
-                        <input id="login-input-box" onChange={this.inputPasswordChangeHandler} placeholder="Password" type="password"></input>
+                        <LoginField changeHandler={this.inputPasswordChangeHandler} placeholder="Username" type="text" />
+                        <LoginField changeHandler={this.inputPasswordChangeHandler} placeholder="Password" type="password" />
                         <input id="login-button" type="submit" value="Log In" />
                     </form>
                 </div>
+            </div>
+        )
+    }
+}
+
+class LoginField extends React.Component {
+    render(props) {
+        return(
+            <div className="login-input-box">
+                <label className="login-input-label">{this.props.placeholder}:</label>
+                <input className="login-input-field" onChange={this.props.changeHandler} placeholder={this.props.placeholder} type={this.props.type}></input>
             </div>
         )
     }

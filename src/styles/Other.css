@@ -44,9 +44,18 @@
     display: inline-block;
 }
 
-#login-input-box {
+.login-input-box {
+    text-align: left;
+    margin-top: 30px;
+}
+
+.login-input-label {
+    text-align: left;
+    margin-left: 180px;
+}
+
+.login-input-field {
     padding: 10px;
-    margin-top: 25px;
     margin-right: auto;
     margin-left: auto;
     display: block;
@@ -68,7 +77,7 @@
     margin-right: auto;
     margin-left: auto;
     display: block;
-    margin-top: 25px;
+    margin-top: 50px;
     text-align: center;
     width: 20%;
     font-weight: bold;

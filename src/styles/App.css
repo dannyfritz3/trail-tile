@@ -38,7 +38,7 @@ body {
   color: #BFAE48;
   top: -5px;
   text-decoration: none;
-  text-shadow: 4px 4px #454545;
+  /* text-shadow: 4px 4px #454545; */
 }
 
 #logo:hover {
