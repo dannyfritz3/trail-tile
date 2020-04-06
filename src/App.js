@@ -3,12 +3,11 @@ import { Route } from 'react-router-dom';
 import './styles/App.css';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import trail_data from './trail_data.json';
 import PageHeader from './components/PageLayout/PageHeader';
-import TrailTileListContainer from './components/PageLayout/TrailTileListContainer';
-import ReiMtbProjectMap from './components/PageLayout/ReiMtbProjectMap';
+import ContentWrap from './components/PageLayout/ContentWrap';
 import About from './components/PageLayout/About';
 import Login from './components/PageLayout/Login';
+import Signup from './components/PageLayout/Signup';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -25,23 +24,20 @@ class App extends React.Component {
         event.stopPropagation();
         var contentHeight = document.getElementById('content-wrap').clientHeight;
         var mapSrc = "https://www.mtbproject.com/widget/map?favs=0&location=fixed"+ 
-        "&x="+ reimtbX +
-        "&y="+ reimtbY +
-        "&z=12.2"+
-        "&h="+ contentHeight;
+        "&x=" + reimtbX +
+        "&y=" + reimtbY +
+        "&z=12.2" +
+        "&h=" + contentHeight;
 
         document.getElementById("map").src = mapSrc;
     }
 
-    componentDidMount() {
+    componentWillMount() {
         axios.get('http://localhost:4000/trails').then((response) => {
             if (response.status >= 400) {
                 throw new Error("Bad response from server");
             };
             this.setState({trails: response.data});
-        }).catch(function(err) {
-            this.setState({trails: err})
-            console.log(err)
         });
     }
 
@@ -49,18 +45,18 @@ class App extends React.Component {
         return(
             <div id="page-container">
                 <PageHeader />
-                <div id="content-wrap">
-                    <Route path="/about">
-                        <About />
-                    </Route>
-                    <Route path="/login">
-                        <Login />
-                    </Route>
-                    <Route exact path="/">
-                        <TrailTileListContainer trailList={this.state.trails} changeMapEvent={this.changeMapEvent}/>
-                        <ReiMtbProjectMap />
-                    </Route>
-                </div>
+                <Route path="/about">
+                    <About />
+                </Route>
+                <Route path="/login">
+                    <Login />
+                </Route>
+                <Route path="/signup">
+                    <Signup />
+                </Route>
+                <Route exact path="/">
+                    <ContentWrap trailList={this.state.trails} changeMapEvent={this.changeMapEvent} />
+                </Route>
             </div>
         );
     }

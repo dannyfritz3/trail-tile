@@ -1,8 +1,26 @@
 import React from 'react';
-import BullitenPost from './BullitenPost';
 import BullitenPostForm from './BullitenPostForm';
+import BullitenPost from './BullitenPost';
 
 class TrailBullitenBoard extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            posts: []
+        };
+        this.updateClientBulletinBoard = this.updateClientBulletinBoard.bind(this);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({posts: nextProps.bulletinPosts})
+    }
+
+    updateClientBulletinBoard(clientPost) {
+        var clientPostComponent = <BullitenPost postAuthor={clientPost[0]} postMessage={clientPost[2]} postTimestamp={clientPost[1]} />;
+        var updatedArray = this.state.posts.concat(clientPostComponent);
+        this.setState({posts: updatedArray});
+    }
+
     render(props) {
         return (
             <div className="trail-bulliten-board" onClick={(event) => event.stopPropagation()}>
@@ -11,11 +29,9 @@ class TrailBullitenBoard extends React.Component {
                     <div className="post-admin-text">{this.props.trailComments}</div>
                 </div>
                 <div className="trail-bulliten-messages">
-                    <BullitenPost postAuthor="Jimmy" postMessage="super radical today. I could't believe how many people went out today for the great trails." postTimestamp="Today 12:00pm" />
-                    <BullitenPost postAuthor="Danny" postMessage="Great weather today for a ride." postTimestamp="Today 12:02pm" />
-                    <BullitenPost postAuthor="Bill" postMessage="Would recommend getting out there now! Couple trouble spots on this route but not too bad." postTimestamp="Today 1:05pm" />
+                    {this.state.posts}
                 </div>
-                <BullitenPostForm />
+                <BullitenPostForm trailId={this.props.trailId} updateClientBulletinBoard={this.updateClientBulletinBoard} />
             </div>
         );
     }

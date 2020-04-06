@@ -3,20 +3,48 @@ import '../../styles/TrailTile.css';
 import TrailTitle from './TrailTitle';
 import TrailCondition from './TrailCondition';
 import TrailOtherInfo from './TrailOtherInfo';
+import BullitenPost from './BullitenPost';
+import axios from 'axios';
 
 class TrailTile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            posts: []
+            posts: [],
+            componentArray: []
         }
         this.clickTrailTile = this.clickTrailTile.bind(this);
+        this.getBulletinMessages = this.getBulletinMessages.bind(this);
+        this.poplulateMessagesComponentArray = this.poplulateMessagesComponentArray.bind(this);
     }
+
+    getBulletinMessages() {
+        var posts = [];
+        axios.get("http://localhost:4000/getBulletinBoard/" + this.props.trail_id).then((response) => {
+            this.setState({
+                posts: response.data
+            });
+            posts = response.data
+            this.poplulateMessagesComponentArray(posts);
+        });
+    }
+
+    poplulateMessagesComponentArray(posts) {
+        var messages = [];
+        for(var i = 0; i < posts.length; i++) {
+            messages.push(<BullitenPost postAuthor={posts[i][0]} postMessage={posts[i][2]} postTimestamp={posts[i][1]} />);
+        }
+        this.setState({
+            componentArray: messages
+        });
+    }
+
     clickTrailTile(event) {
         var el = event.currentTarget;
         if (!el.classList.contains("active-tile")) {
             el.classList.remove("inactive-tile");
             el.classList.add("active-tile");
+            this.getBulletinMessages();
         } else {
             el.classList.remove("active-tile");
             el.classList.add("inactive-tile");
@@ -30,7 +58,7 @@ class TrailTile extends React.Component {
                     <TrailTitle trailName={this.props.name} trailLocation={this.props.location} reimtbX={this.props.reimtbX} reimtbY={this.props.reimtbY} changeMapHandler={this.props.changeMapEvent} />
                     <TrailCondition trailCondition={this.props.condition === "Melting Do Not Ride" ? "Melting" : this.props.condition} trailTimestamp={this.props.parsedTimestamp} />
                 </div>
-                <TrailOtherInfo trailComments={this.props.comments} trailAuthor={this.props.username} trailRid={this.props.trailforksMapId} />
+                <TrailOtherInfo trailComments={this.props.comments} trailAuthor={this.props.username} trailRid={this.props.trailforksMapId} trailId={this.props.trail_id} bulletinPosts={this.state.componentArray} />
                 {/* <TrailWeatherOutlook /> */}
             </div>
         );
