@@ -16,7 +16,10 @@ class TrailBullitenBoard extends React.Component {
     }
 
     updateClientBulletinBoard(clientPost) {
-        var clientPostComponent = <BullitenPost postAuthor={clientPost[0]} postMessage={clientPost[2]} postTimestamp={clientPost[1]} />;
+        var postUsername = clientPost[0];
+        var postMessage = clientPost[2];
+        var postTimestampArray = clientPost[1];
+        var clientPostComponent = <BullitenPost postAuthor={postUsername} postMessage={postMessage} postTimestamp={postTimestampArray} />;
         var updatedArray = this.state.posts.concat(clientPostComponent);
         this.setState({posts: updatedArray});
     }
@@ -29,9 +32,21 @@ class TrailBullitenBoard extends React.Component {
                     <div className="post-admin-text">{this.props.trailComments}</div>
                 </div>
                 <div className="trail-bulliten-messages">
-                    {this.state.posts}
+                    {this.state.posts.length > 0 ? this.state.posts : <EmptyBulletinBoardMessage />}
                 </div>
                 <BullitenPostForm trailId={this.props.trailId} updateClientBulletinBoard={this.updateClientBulletinBoard} />
+            </div>
+        );
+    }
+}
+
+class EmptyBulletinBoardMessage extends React.Component {
+    render() {
+        return (
+            <div className="blank-bulletin-board-message" style={{
+                textAlign: "center"
+            }}>
+                <p>No posts have been made on this trail recently.</p>
             </div>
         );
     }

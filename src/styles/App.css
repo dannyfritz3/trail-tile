@@ -79,7 +79,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #1E2019;
+  /* background-color: #1E2019; */
   height: 10vh;
   width: 100vw;
 }

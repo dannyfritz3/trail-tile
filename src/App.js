@@ -17,19 +17,6 @@ class App extends React.Component {
             isLoaded: false,
             trails: []
         };
-        this.changeMapEvent = this.changeMapEvent.bind(this);
-    }
-
-    changeMapEvent (event, reimtbX, reimtbY) {
-        event.stopPropagation();
-        var contentHeight = document.getElementById('content-wrap').clientHeight;
-        var mapSrc = "https://www.mtbproject.com/widget/map?favs=0&location=fixed"+ 
-        "&x=" + reimtbX +
-        "&y=" + reimtbY +
-        "&z=12.2" +
-        "&h=" + contentHeight;
-
-        document.getElementById("map").src = mapSrc;
     }
 
     componentWillMount() {
@@ -42,6 +29,17 @@ class App extends React.Component {
     }
 
     render() {
+        const changeMapEvent = (event, reimtbX, reimtbY) => {
+            event.stopPropagation();
+            var contentHeight = document.getElementById('content-wrap').clientHeight;
+            var mapSrc = "https://www.mtbproject.com/widget/map?favs=0&location=fixed"+ 
+            "&x=" + reimtbX +
+            "&y=" + reimtbY +
+            "&z=12.2" +
+            "&h=" + contentHeight;
+    
+            document.getElementById("map").src = mapSrc;
+        };
         return(
             <div id="page-container">
                 <PageHeader />
@@ -55,7 +53,7 @@ class App extends React.Component {
                     <Signup />
                 </Route>
                 <Route exact path="/">
-                    <ContentWrap trailList={this.state.trails} changeMapEvent={this.changeMapEvent} />
+                    <ContentWrap trailList={this.state.trails} changeMapEvent={changeMapEvent} />
                 </Route>
             </div>
         );

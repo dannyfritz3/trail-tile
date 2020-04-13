@@ -173,6 +173,8 @@
   background-color: #ADAEAB;
   padding: 5px 5px 5px 5px;
   border: 3px solid #1E2019;
+  max-height: 250px;
+  overflow-y: scroll;
 }
 
 .post-admin-author {
@@ -183,7 +185,7 @@
   padding-top: 1px;
   margin-right: 5px;
   background-color: #1E2019;
-  box-shadow: 3px 3px #484848;
+  /* box-shadow: 3px 3px #484848; */
   color: #BFAE48;
 }
 
@@ -192,21 +194,34 @@
   padding-left: 5px;
 }
 
-.post-timestamp {
-  width: 15%;
-  float: right;
-  color: #1E2019;
-  font-size: 10px;
-  text-align: left;
-  padding-top: 5px;
-}
-
-.post-author-and-mesesage {
-  width: 85%;
-}
-
 .post-content {
   width: 100%;
+}
+
+.post-details {
+  display: inline-block;
+  width: 25%;
+  vertical-align: top;
+  background-color: #C2C2C0;
+  padding: 5px;
+}
+
+.post-author {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.post-timestamp {
+  font-size: 10px;
+  font-style: italic;
+}
+
+.post-message {
+  display: inline-block;
+  width: 75%;
+  font-size: 15px;
+  word-wrap: break-word;
+  padding-left: 5px;
 }
 
 .bulliten-post-form {
