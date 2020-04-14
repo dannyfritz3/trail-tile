@@ -10,7 +10,40 @@ import Login from './components/PageLayout/Login';
 import Signup from './components/PageLayout/Signup';
 
 class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            windowWidth: 0,
+            windowHeight: 0
+        };
+        this.updateDimensions = this.updateDimensions.bind(this);
+    }
+
+    componentDidMount() {
+        this.updateDimensions();
+        window.addEventListener("resize", this.updateDimensions);
+    }
+    
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.updateDimensions);
+    }
+
+    updateDimensions() {
+        let windowWidth = typeof window !== "undefined" ? window.innerWidth : 0;
+        let windowHeight = typeof window !== "undefined" ? window.innerHeight : 0;
+
+        this.setState({
+            windowWidth: windowWidth,
+            windowHeight: windowHeight
+        });
+
+        console.log("Window Width: " + this.state.windowWidth + "\nWindow Height: " + this.state.windowHeight);
+    }
+
     render() {
+        let showMap = this.state.windowWidth > 1024;
+        console.log(showMap);
+        
         return(
             <div id="page-container">
                 <PageHeader />
@@ -24,7 +57,7 @@ class App extends React.Component {
                     <Signup />
                 </Route>
                 <Route exact path="/">
-                    <ContentWrap />
+                    <ContentWrap showMap={showMap} />
                 </Route>
             </div>
         );

@@ -22,7 +22,9 @@ class ReiMtbProjectMap extends React.Component {
     
     render() {
         return (
-            <div id="content">
+            <div id="content" style={{
+                // width: this.props.showMap ? "100%" : "0%"
+            }}>
                 <div id="map-container">
                     <iframe title="map" id="map" style={this.state.myStyle} frameBorder="0" scrolling="no" 
                         src={"https://www.mtbproject.com/widget/map?favs=0&location=fixed&x=-10532963&y=5821316&z=4.5&h=" + this.state.myStyle.maxHeight}>

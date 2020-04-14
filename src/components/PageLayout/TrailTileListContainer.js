@@ -32,7 +32,10 @@ class TrailTileListContainer extends React.Component{
             document.getElementById("map").src = mapSrc;
         };
         return (
-            <div id="sidebar">
+            <div id="sidebar" style={{
+                maxWidth: this.props.showMap ? "565px" : "100vw",
+                marginLeft: this.props.showMap ? "" : "auto"
+            }}>
                 <TrailTileList trails={this.state.trails} changeMapEvent={changeMapEvent}/>
             </div>
         )

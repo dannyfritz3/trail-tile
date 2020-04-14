@@ -6,8 +6,8 @@ class ContentWrap extends React.Component {
     render(props) {
         return (
             <div id="content-wrap">
-                <TrailTileListContainer />
-                <ReiMtbProjectMap />
+                <TrailTileListContainer showMap={this.props.showMap} />
+                <ReiMtbProjectMap showMap={this.props.showMap} />
             </div>
         )
     }
