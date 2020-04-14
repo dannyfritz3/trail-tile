@@ -8,38 +8,9 @@ import ContentWrap from './components/PageLayout/ContentWrap';
 import About from './components/PageLayout/About';
 import Login from './components/PageLayout/Login';
 import Signup from './components/PageLayout/Signup';
-import axios from 'axios';
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isLoaded: false,
-            trails: []
-        };
-    }
-
-    componentWillMount() {
-        axios.get('http://localhost:4000/trails').then((response) => {
-            if (response.status >= 400) {
-                throw new Error("Bad response from server");
-            };
-            this.setState({trails: response.data});
-        });
-    }
-
     render() {
-        const changeMapEvent = (event, reimtbX, reimtbY) => {
-            event.stopPropagation();
-            var contentHeight = document.getElementById('content-wrap').clientHeight;
-            var mapSrc = "https://www.mtbproject.com/widget/map?favs=0&location=fixed"+ 
-            "&x=" + reimtbX +
-            "&y=" + reimtbY +
-            "&z=12.2" +
-            "&h=" + contentHeight;
-    
-            document.getElementById("map").src = mapSrc;
-        };
         return(
             <div id="page-container">
                 <PageHeader />
@@ -53,7 +24,7 @@ class App extends React.Component {
                     <Signup />
                 </Route>
                 <Route exact path="/">
-                    <ContentWrap trailList={this.state.trails} changeMapEvent={changeMapEvent} />
+                    <ContentWrap />
                 </Route>
             </div>
         );

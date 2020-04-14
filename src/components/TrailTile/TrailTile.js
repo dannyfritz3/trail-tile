@@ -29,7 +29,6 @@ class TrailTile extends React.Component {
 
         const poplulateMessagesComponentArray = (posts) => {
             var messages = [];
-            debugger;
             for (var i = 0; i < posts.length; i++) {
                 var postUsername = posts[i][0];
                 var postMessage = posts[i][2];

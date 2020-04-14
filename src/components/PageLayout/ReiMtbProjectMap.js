@@ -7,6 +7,7 @@ class ReiMtbProjectMap extends React.Component {
         this.state = {
             myStyle: {
                 height: 0,
+                maxHeight: 0,
                 width: 0,
                 maxWidth: 0
             }
