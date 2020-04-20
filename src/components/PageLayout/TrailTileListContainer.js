@@ -36,7 +36,7 @@ class TrailTileListContainer extends React.Component{
                 maxWidth: this.props.showMap ? "565px" : "100vw",
                 marginLeft: this.props.showMap ? "" : "auto"
             }}>
-                <TrailTileList trails={this.state.trails} changeMapEvent={changeMapEvent}/>
+                <TrailTileList windowWidth={this.props.windowWidth} windowHeight={this.props.windowHeight} trails={this.state.trails} changeMapEvent={changeMapEvent}/>
             </div>
         )
     };

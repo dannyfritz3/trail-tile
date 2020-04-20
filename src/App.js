@@ -46,7 +46,7 @@ class App extends React.Component {
         
         return(
             <div id="page-container">
-                <PageHeader />
+                <PageHeader windowWidth={this.state.windowWidth} windowHeight={this.state.windowHeight} />
                 <Route path="/about">
                     <About />
                 </Route>
@@ -57,7 +57,7 @@ class App extends React.Component {
                     <Signup />
                 </Route>
                 <Route exact path="/">
-                    <ContentWrap showMap={showMap} />
+                    <ContentWrap windowWidth={this.state.windowWidth} windowHeight={this.state.windowHeight} showMap={showMap} />
                 </Route>
             </div>
         );

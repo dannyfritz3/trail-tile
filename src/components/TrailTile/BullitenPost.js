@@ -11,7 +11,7 @@ class BullitenPost extends React.Component {
                     <div className="post-timestamp">
                         {this.props.postTimestamp[0]}
                         <br/>
-                        @ {this.props.postTimestamp[1]}
+                        @ <i>{this.props.postTimestamp[1]}</i>
                     </div>
                 </div>
                 <div className="post-message">
