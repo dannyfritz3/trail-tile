@@ -137,10 +137,6 @@
   opacity: 0.75;
 }
 
-.weather-div {
-  margin-top: 15px;  
-}
-
 .outlook {
   display: inline-block;
   height: 50px;
@@ -158,14 +154,22 @@
 }
 
 .weather-icon {
-  height: 25px;
+  height: 40px;
+}
+
+.weather-div {
+
 }
 
 .weather-outlook-div {
   /*border: 2px solid black;*/
   /*border-radius: 10px;*/
-  width: 522px;
-  background-color: #C2C2C0;
+  text-align: center;
+  overflow: hidden;
+  height: 100px;
+  /* background-color: #ADAEAB; */
+  display: block;
+  border-bottom: 3px #1E2019 solid;
 }
 
 .today {
@@ -286,4 +290,13 @@
 
 .bulliten-post-button:focus {
   outline: none;
+}
+
+.weather-other-data-block {
+  border-left: 3px solid #484848;
+  background-color: #ADAEAB;
+}
+
+.weather-other-data-block:not(:last-child) {
+  border-bottom: 3px solid #484848;
 }

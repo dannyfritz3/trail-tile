@@ -6,7 +6,7 @@ class PageHeader extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            windowWidth: 601,
+            windowWidth: 0,
             windowHeight: 0
         }
     }

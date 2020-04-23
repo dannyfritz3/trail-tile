@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {createFancyTimestamp} from '../../utils';
+import {createFancyTimestamp} from '../../../utils';
 
 class BullitenPostForm extends React.Component {
     constructor(props) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import TrailBullitenBoard from './TrailBullitenBoard';
+import TrailBullitenBoard from './BulletinBoard/TrailBullitenBoard';
 
 class TrailOtherInfo extends React.Component {
     render(props) {
