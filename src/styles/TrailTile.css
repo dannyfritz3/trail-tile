@@ -27,7 +27,7 @@
 }
 
 .active-tile {
-  box-shadow: 8px 8px 1px;
+  box-shadow: 8px 8px 1px #1E2019;
   max-height: 750px;
   transform: max-height 500ms ease-in;
 }
@@ -140,16 +140,18 @@
 .outlook {
   display: inline-block;
   height: 50px;
-  width: 75px;
+  width: 85px;
   text-align: center;
 }
 
 .day-header {
   font-size: 15px;
-  margin: 0;
+  margin-bottom: 5px;
 }
 
 .temp-header {
+  padding-top: 5px;
+  font-size: 12px;
   margin: 0;
 }
 

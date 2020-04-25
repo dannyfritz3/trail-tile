@@ -5,6 +5,7 @@ import TrailCondition from './TrailCondition';
 import TrailOtherInfo from './TrailOtherInfo';
 import BullitenPost from './BulletinBoard/BullitenPost'
 import TrailWeatherOutlook from './TrailWeather/TrailWeatherOutlook';
+import TrailWeatherOutlookDay from './TrailWeather/TrailWeatherOutlookDay';
 import axios from 'axios';
 
 class TrailTile extends React.Component {
@@ -16,7 +17,10 @@ class TrailTile extends React.Component {
             bulletinBoardReceived: false,
             windowWidth: this.props.windowWidth,
             windowHeight: this.props.windowHeight,
-            weatherData: {rainfall: 0, windspeed: 0, cloudcover: 0}
+            weatherData: {rainfall: 0, windspeed: 0, cloudcover: 0},
+            forecastTemps: [],
+            liveWeatherData: {},
+            weatherOutlookComponentArray: []
         }
     }
 
@@ -28,18 +32,53 @@ class TrailTile extends React.Component {
     }
 
     render(props) {
-        const clickTrailTile = (event) => {
+        const clickTrailTile = async (event) => {
             var el = event.currentTarget;
             if (!el.classList.contains("active-tile")) {
                 el.classList.remove("inactive-tile");
                 el.classList.add("active-tile");
-                getWeatherData();
                 getBulletinMessages();
+                await getWeatherData();
             } else {
                 el.classList.remove("active-tile");
                 el.classList.add("inactive-tile");
             }
         };
+
+        const getWeatherData = async () => {
+            var location = `${this.props.location}, MN`
+            await axios.get("http://localhost:4000/getWeatherData/" + location).then((response) => {
+                debugger;
+                this.setState({
+                    forecastTemps: response.data.forecastedWeatherData, 
+                    liveWeatherData: response.data.liveWeatherData
+                        // windspeed: response.data[0].wsps, 
+                        // cloudcover: response.data[0].cloudcover
+                });
+                populateWeatherOutlookArray(this.state.forecastTemps);
+            });
+        };
+
+        const populateWeatherOutlookArray = (forecastTemps) => {
+            var arr = [];
+            // if(forecastTemps) {
+                for (var i = 0; i < forecastTemps.length; i++) {
+                    var forecastDay = forecastTemps[i].observation_time;
+                    var forecastHigh = parseInt(forecastTemps[i].temp[1].max.value);
+                    var forecastLow = parseInt(forecastTemps[i].temp[0].min.value);
+                    arr.push(<TrailWeatherOutlookDay weatherDay={forecastDay} forecastHigh={forecastHigh} 
+                        forecastLow={forecastLow}/>);
+                }
+            // } else {
+            //     for (var e = 0; e < 4; e++) {
+            //         arr.push(<TrailWeatherOutlookDay weatherDay={"--"} forecastHigh={"-"} forecastLow={"-"} />);
+            // //     }
+            // }
+            this.setState({
+                weatherOutlookComponentArray: arr
+            });
+        };
+
         const getBulletinMessages = () => {
             var posts = [];
             axios.get("http://localhost:4000/getBulletinBoard/" + this.props.trail_id).then((response) => {
@@ -64,19 +103,6 @@ class TrailTile extends React.Component {
             });
         };
 
-        const getWeatherData = () => {
-            var location = `${this.props.location}, MN`
-            axios.get("http://localhost:4000/getWeatherData/" + location).then((response) => {
-                this.setState({
-                    weatherData: {
-                        rainfall: response.data.values[0].precip, 
-                        windspeed: response.data.values[0].wspd, 
-                        cloudcover: response.data.values[0].cloudcover
-                    }
-                });
-            });
-        };
-
         return (
             <div style={this.state.windowWidth < 600 ? {transform: 'scale(0.75)'} : {transform: 'scale(1)'}} className="trail-tile inactive-tile" onClick={(e) => clickTrailTile(e)}>
                 <div className="trail-tile-header">
@@ -84,7 +110,7 @@ class TrailTile extends React.Component {
                     <TrailCondition trailCondition={this.props.condition === "Melting Do Not Ride" ? "Melting" : this.props.condition} trailTimestamp={this.props.parsedTimestamp} />
                 </div>
                 <div onClick={(event) => {event.stopPropagation()}}>
-                    <TrailWeatherOutlook weatherData={this.state.weatherData} />
+                    <TrailWeatherOutlook weatherOutlookComponentArray={this.state.weatherOutlookComponentArray} liveWeatherData={this.state.liveWeatherData} />
                     <TrailOtherInfo trailComments={this.props.comments} trailAuthor={this.props.username} trailRid={this.props.trailforksMapId} trailId={this.props.trail_id} bulletinPosts={this.state.componentArray} />
                 </div>
             </div>
