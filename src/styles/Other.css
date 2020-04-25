@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bungee&display=swap');
+
+#about-header {
+    text-align: center;
+    padding: 50px;
+    font-weight: bold;
+    font-family: 'Staatliches', cursive;
+}
+
+#about-page-wrap {
+    position: relative;
+    height: 100vh;
+    background-color: #ADAEAB;
+    position: relative;
+    min-height: 100vh;
+    text-align: center;
+    overflow-y: auto;
+}
+
+#signup-header {
+    text-align: center;
+    padding: 0px 10px 5px 10px;
+    font-family: 'Staatliches', cursive;
+}
+
+#signup-page-wrap {
+    text-align: center;
+    position: relative;
+    height: 100vh;
+    background-color: #ADAEAB;
+    position: relative;
+    min-height: 100vh;
+    text-align: center;
+    padding-bottom: 25px;
+    overflow-y: auto;
+}
+
+#signup-container {
+    text-align: center;
+    position: relative;
+    margin: auto;
+    width: 50vw;
+    min-height: 100vh;
+    height: 100%;
+    display: inline-block;
+}
+
+#signup-form {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+#login-header {
+    text-align: center;
+    padding: 0px 10px 5px 10px;
+    font-family: 'Staatliches', cursive;
+}
+
+#login-page-wrap {
+    text-align: center;
+    position: relative;
+    height: 100vh;
+    background-color: #ADAEAB;
+    position: relative;
+    min-height: 100vh;
+    text-align: center;
+    overflow-y: auto;
+}
+
+#login-container {
+    text-align: center;
+    position: relative;
+    margin: auto;
+    width: 50vw;
+    min-height: 100vh;
+    height: 100%;
+    display: inline-block;
+}
+
+#login-form {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.login-input-box {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.login-input-label {
+    width: 55%;
+    margin-left: 22.5%;
+    display: block;
+    text-align: left;
+    font-family: 'Staatliches', cursive;
+}
+
+.login-input-field {
+    padding: 10px;
+    background-color: #C2C2C0;
+    border: 3px solid #1E2019;
+    width: 55%;
+    height: 100%;
+    overflow-wrap: break-word;
+}
+
+.login-input-box {
+    text-align: center;
+}
+
+.login-input-field:focus {
+    outline-color: #BFAE48;
+    outline-width: 5px;
+}
+
+.login-button {
+    background-color: #ADAEAB;
+    border: 3px solid #1E2019;
+    font-family: 'Staatliches', cursive;
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 25px;
+    text-align: center;
+    width: 20%;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+.login-button:hover{
+    color: #BFAE48;
+    background-color: #1E2019;
+    text-decoration: none;
+  }
+  
+.login-button:focus {
+    outline: none;
+  }
