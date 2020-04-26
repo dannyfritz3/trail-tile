@@ -2,17 +2,24 @@
   font-family: 'Open Sans', sans-serif;
     overflow: hidden;
     margin: 5px;
-    padding: 0px 5px 5px;
+    /* padding: 0px 5px 5px; */
     border: 4px solid #1E2019;
     /*border-radius: 10px;*/
     display: inline-block;
     width: 525px;
     user-select: none;
     background-color: #C2C2C0;
-  } 
+}
 
-.trail-tile:hover {
-    box-shadow: 8px 8px 1px;
+.trail-tile-header {
+  right: 5px;
+  height: 100px;
+  border-bottom: 3px black solid;
+}
+
+.trail-tile-header:hover {
+    /* box-shadow: 8px 8px 1px; */
+    background-color: #ADAEAB;
 }
 
 .trail-tile-header .active-tile {
@@ -20,17 +27,22 @@
 }
 
 .active-tile {
-  box-shadow: 8px 8px 1px;
+  box-shadow: 8px 8px 1px #1E2019;
   max-height: 750px;
-  transition: max-height 500ms ease-in;
+  transform: max-height 500ms ease-in;
 }
 
 .inactive-tile {
   box-shadow: 0 0;
   max-height: 100px;
-  transition: max-height 500ms ease-out;
+  transform: max-height 500ms ease-out;
 }
-  
+
+@keyframes smoothopen {
+  0% {max-height: 100px;}
+  50% {max-height: 750px;}
+}
+
 .info-div {
   max-width: 300px;
   padding-top: 5px;
@@ -44,12 +56,12 @@
   right: 25px;
   float: right;
   width: 180px;
-}
+} 
 
 .condition-heading {
   display: inline-block;
   position: relative;
-  top: -5px;
+  top: -15px;
   padding-left: 15px;
   font-size: 15px;
   width: 100px;
@@ -68,13 +80,14 @@
   display: block;
   color: #1E2019;
   overflow: hidden;
+  padding-left: 5px;
 }
 
 .location-heading {
   color: #1E2019;
   position: relative;
   display: inline-block;
-  padding-left: 6px;
+  padding-left: 10px;
 }
 
 .info-dropdown {
@@ -98,8 +111,6 @@
 .other-info {
   visibility: visible;
   margin: 15px;
-  padding-top: 20px;
-  border-top: 3px black solid;
 }
 
 .last-updated-heading {
@@ -126,81 +137,114 @@
   opacity: 0.75;
 }
 
-.weather-div {
-  margin-top: 15px;  
-}
-
 .outlook {
+  height: 100%;
   display: inline-block;
-  height: 100px;
-  width: 100px;
+  width: 85px;
   text-align: center;
 }
 
 .day-header {
-  margin: 0;
+  font-size: 15px;
+  margin-bottom: 5px;
 }
 
 .temp-header {
+  padding-top: 5px;
+  font-size: 12px;
   margin: 0;
 }
 
 .weather-icon {
-  height: 50px;
+  height: 40px;
+}
+
+.weather-div {
+
 }
 
 .weather-outlook-div {
-  /*border: 2px solid black;*/
-  /*border-radius: 10px;*/
-  width: 522px;
-  background-color: #FDFDFD;
+  overflow: hidden;
+  height: 100px;
+  display: block;
+  border-bottom: 3px #1E2019 solid;
 }
 
 .today {
   font-weight: bold;
 }
 
-.trail-bulliten-board{
+.trail-bulliten-board {
   cursor: default;
 }
 
 .trail-bulliten-messages {
+  margin-top: 10px;
   background-color: #ADAEAB;
-  padding: 5px 5px 5px 5px;
-  border: 3px solid #1E2019;
+  /*padding: 5px 5px 5px 5px;*/
+  border-left: 3px solid #1E2019;
+  border-top: 3px solid #1E2019;
+  border-right: 3px solid #1E2019;
+  max-height: 250px;
+  overflow-y: scroll;
 }
 
-.post-admin-box {
+.post-admin-author {
   display: inline;
   padding-left: 5px;
   padding-right: 5px;
   padding-bottom: 1px;
   padding-top: 1px;
+  margin-right: 5px;
   background-color: #1E2019;
+  /* box-shadow: 3px 3px #484848; */
   color: #BFAE48;
 }
 
-.post-timestamp {
-  width: 15%;
-  float: right;
-  color: #1E2019;
-  font-size: 10px;
-  text-align: left;
-  padding-top: 5px;
-}
-
-.post-author-and-mesesage {
-  width: 85%;
+.post-admin-text {
+  display: inline;
+  padding-left: 5px;
 }
 
 .post-content {
   width: 100%;
+  display: flex;
+  background-color: #C2C2C0;
+}
+
+.post-content:not(:last-child) {
+  border-bottom: 3px solid #484848;
+}
+
+.post-details {
+  display: inline-block;
+  width: 25%;
+  vertical-align: top;
+  padding: 5px;
+  /* border-right: 3px solid #1E2019; */
+  background-color: #ADAEAB;
+}
+
+.post-author {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.post-timestamp {
+  font-size: 10px;
+}
+
+.post-message {
+  display: inline-block;
+  width: 75%;
+  font-size: 15px;
+  word-wrap: break-word;
+  padding-left: 5px;
+  margin: auto;
 }
 
 .bulliten-post-form {
-  border-left: 3px solid #1E2019;
-  border-right: 3px solid #1E2019;
-  border-bottom: 3px solid #1E2019;
+  border: 3px solid #1E2019;
   width: 100%;
   height: 100%;
 }
@@ -218,6 +262,10 @@
   outline: 0;
 }
 
+.bulliten-post-input:focus > .bulliten-post-form {
+  box-shadow: 3px 3px #484848;
+}
+
 .bulliten-post-button {
   background-color: #ADAEAB;
   border-top: 1px solid #ADAEAB;
@@ -230,7 +278,7 @@
 }
 
 .bulliten-post-button:hover{
-  color: #ADAEAB;
+  color: #BFAE48;
   background-color: #1E2019;
   border-top: 1px solid #1E2019;
   border-bottom: 2px solid #1E2019;
@@ -240,4 +288,13 @@
 
 .bulliten-post-button:focus {
   outline: none;
+}
+
+.weather-other-data-block {
+  border-left: 3px solid #484848;
+  background-color: #ADAEAB;
+}
+
+.weather-other-data-block:not(:last-child) {
+  border-bottom: 3px solid #484848;
 }
