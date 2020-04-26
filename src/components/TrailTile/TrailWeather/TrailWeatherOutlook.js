@@ -29,10 +29,10 @@ class TrailWeatherOutlook extends React.Component {
         return (
             <div class="weather-div">
                 <div class="weather-outlook-div">
+                    <TrailWeatherOtherData liveWeatherData={this.props.liveWeatherData} />
                     <div style={{display: "inline-block", height: "100%"}}>
                         {this.props.weatherOutlookComponentArray}
                     </div>
-                    <TrailWeatherOtherData liveWeatherData={this.props.liveWeatherData} />
                 </div>
             </div>
         );
