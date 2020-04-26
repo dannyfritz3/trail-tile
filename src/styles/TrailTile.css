@@ -145,8 +145,11 @@
 }
 
 .day-header {
+  padding-top: 3px;
   font-size: 15px;
-  margin-bottom: 5px;
+  margin-bottom: 0;
+  height: 33px;
+  background-color: #ADAEAB;
 }
 
 .temp-header {
@@ -157,10 +160,6 @@
 
 .weather-icon {
   height: 40px;
-}
-
-.weather-div {
-
 }
 
 .weather-outlook-div {
@@ -291,10 +290,10 @@
 }
 
 .weather-other-data-block {
-  border-right: 3px solid #484848;
+  border-right: 3px solid #1E2019;
   background-color: #ADAEAB;
 }
 
 .weather-other-data-block:not(:last-child) {
-  border-bottom: 3px solid #484848;
+  border-bottom: 3px solid #1E2019;
 }

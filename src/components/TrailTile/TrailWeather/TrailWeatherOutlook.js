@@ -25,6 +25,7 @@ class TrailWeatherOutlook extends React.Component {
         });
     }
 
+    
     render(props) {
         return (
             <div class="weather-div">

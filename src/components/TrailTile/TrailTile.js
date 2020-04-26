@@ -50,6 +50,30 @@ class TrailTile extends React.Component {
             }
         };
 
+        const getBulletinMessages = () => {
+            var posts = [];
+            axios.get("http://localhost:4000/getBulletinBoard/" + this.props.trail_id).then((response) => {
+                this.setState({
+                    posts: response.data
+                });
+                posts = response.data
+                poplulateMessagesComponentArray(posts);
+            });
+        };
+
+        const poplulateMessagesComponentArray = (posts) => {
+            var messages = [];
+            for (var i = 0; i < posts.length; i++) {
+                var postUsername = posts[i][0];
+                var postMessage = posts[i][2];
+                var postTimestamp = posts[i][1];
+                messages.push(<BullitenPost postAuthor={postUsername} postMessage={postMessage} postTimestamp={postTimestamp} />);
+            }
+            this.setState({
+                componentArray: messages
+            });
+        };
+
         const getWeatherData = async () => {
             var location = `${this.props.location}, MN`;
             await axios.get("http://localhost:4000/getWeatherData/" + location).then((response) => {
@@ -77,31 +101,7 @@ class TrailTile extends React.Component {
                 weatherOutlookComponentArray: arr
             });
         };
-
-        const getBulletinMessages = () => {
-            var posts = [];
-            axios.get("http://localhost:4000/getBulletinBoard/" + this.props.trail_id).then((response) => {
-                this.setState({
-                    posts: response.data
-                });
-                posts = response.data
-                poplulateMessagesComponentArray(posts);
-            });
-        };
-
-        const poplulateMessagesComponentArray = (posts) => {
-            var messages = [];
-            for (var i = 0; i < posts.length; i++) {
-                var postUsername = posts[i][0];
-                var postMessage = posts[i][2];
-                var postTimestamp = posts[i][1];
-                messages.push(<BullitenPost postAuthor={postUsername} postMessage={postMessage} postTimestamp={postTimestamp} />);
-            }
-            this.setState({
-                componentArray: messages
-            });
-        };
-
+        
         return (
             <div style={this.state.windowWidth < 600 ? {transform: 'scale(0.75)'} : {transform: 'scale(1)'}} className="trail-tile inactive-tile" onClick={(e) => clickTrailTile(e)}>
                 <div className="trail-tile-header">

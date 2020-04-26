@@ -30,16 +30,30 @@ class TrailWeatherOtherData extends React.Component {
                 wind_direction: nextProps.liveWeatherData.wind_direction ? parseWindDirection(nextProps.liveWeatherData.wind_direction.value) : ""
         }})
     }
+
     render(props) {
+        const computeBackgroundColorGradiantArray = (type) => {
+            var startColor;
+            var endColor;
+            switch(type) {
+                case "temp": startColor = "#A4243B"; endColor = "#A4243B"; break;
+                case "wind_speed": startColor = ""; endColor = ""; break;
+                case "precipitation": startColor = ""; endColor = ""; break;
+                default: break;
+            };
+            var returnStyle = {};
+            return [startColor, endColor];
+        };
+
         return (
             <div style={{display: 'inline-block', float: "left", height: '100%', width: '90px'}}>
                 <div className="weather-other-data-block" style={{ display: 'block', height: '33px' }}>
                     <img style={this.state.style} src={require("../../../resource/Icons/WeatherIcons/icons8-thermometer-50.png")} alt="wind" />
-                    <div style={{ display: "inline", fontSize: "11px"}}>{this.state.liveWeatherData.temp} <b>&#8457;</b></div>
+                    <div style={{ display: "inline", fontSize: "12px"}}>{this.state.liveWeatherData.temp} <b>&#8457;</b></div>
                 </div>
                 <div className="weather-other-data-block" style={{display: 'block', height: '33px'}}>
                     <img style={this.state.style} src={require("../../../resource/Icons/WeatherIcons/icons8-wet-50.png")} alt="wind" />
-                    <div style={{display: "inline", fontSize: "11px"}}>{this.state.liveWeatherData.precipitation} <b>in/hr</b></div>
+                    <div style={{display: "inline", fontSize: "12px"}}>{this.state.liveWeatherData.precipitation} <b>in/hr</b></div>
                 </div>
                 <div className="weather-other-data-block" style={{display: 'block', height: '33px'}}>
                     <img style={this.state.style} src={require("../../../resource/Icons/WeatherIcons/icons8-windsock-50.png")} alt="wind" />
