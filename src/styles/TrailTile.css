@@ -138,8 +138,8 @@
 }
 
 .outlook {
+  height: 100%;
   display: inline-block;
-  height: 50px;
   width: 85px;
   text-align: center;
 }
@@ -164,12 +164,8 @@
 }
 
 .weather-outlook-div {
-  /*border: 2px solid black;*/
-  /*border-radius: 10px;*/
-  text-align: center;
   overflow: hidden;
   height: 100px;
-  /* background-color: #ADAEAB; */
   display: block;
   border-bottom: 3px #1E2019 solid;
 }

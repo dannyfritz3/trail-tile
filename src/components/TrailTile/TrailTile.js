@@ -19,7 +19,12 @@ class TrailTile extends React.Component {
             windowHeight: this.props.windowHeight,
             weatherData: {rainfall: 0, windspeed: 0, cloudcover: 0},
             forecastTemps: [],
-            liveWeatherData: {},
+            liveWeatherData: {
+                temp: 0,
+                precipitation: 0,
+                wind_speed: 0,
+                wind_direction: ""
+            },
             weatherOutlookComponentArray: []
         }
     }
@@ -46,9 +51,8 @@ class TrailTile extends React.Component {
         };
 
         const getWeatherData = async () => {
-            var location = `${this.props.location}, MN`
+            var location = `${this.props.location}, MN`;
             await axios.get("http://localhost:4000/getWeatherData/" + location).then((response) => {
-                debugger;
                 this.setState({
                     forecastTemps: response.data.forecastedWeatherData, 
                     liveWeatherData: response.data.liveWeatherData
@@ -61,19 +65,14 @@ class TrailTile extends React.Component {
 
         const populateWeatherOutlookArray = (forecastTemps) => {
             var arr = [];
-            // if(forecastTemps) {
-                for (var i = 0; i < forecastTemps.length; i++) {
-                    var forecastDay = forecastTemps[i].observation_time;
-                    var forecastHigh = parseInt(forecastTemps[i].temp[1].max.value);
-                    var forecastLow = parseInt(forecastTemps[i].temp[0].min.value);
-                    arr.push(<TrailWeatherOutlookDay weatherDay={forecastDay} forecastHigh={forecastHigh} 
-                        forecastLow={forecastLow}/>);
-                }
-            // } else {
-            //     for (var e = 0; e < 4; e++) {
-            //         arr.push(<TrailWeatherOutlookDay weatherDay={"--"} forecastHigh={"-"} forecastLow={"-"} />);
-            // //     }
-            // }
+            for (var i = 0; i < forecastTemps.length; i++) {
+                var forecastDay = forecastTemps[i].observation_time;
+                var forecastHigh = parseInt(forecastTemps[i].temp[1].max.value);
+                var forecastLow = parseInt(forecastTemps[i].temp[0].min.value);
+                var weatherCode = forecastTemps[i].weather_code.value;
+                arr.push(<TrailWeatherOutlookDay weatherDay={forecastDay} forecastHigh={forecastHigh}
+                    forecastLow={forecastLow} weatherCode={weatherCode} isToday={i === 0} />);
+            }
             this.setState({
                 weatherOutlookComponentArray: arr
             });
