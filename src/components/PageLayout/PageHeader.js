@@ -20,10 +20,9 @@ class PageHeader extends React.Component{
 
     render(props) {
         return (
-            <div id="header" /*style={this.state.style}*/ >
+            <div id="header">
                 <ul className="nav-tabs">
-                    {/* <img src="public/smaller_MN.png" alt="icon" /> */}
-                    <Link id="logo" to="/">{this.state.windowWidth < 600 ? "MORC" : "Minnesota Off-Road Cyclists"}</Link>
+                    <Link id="logo" to="/">{this.state.windowWidth < 600 ? "MORC" : "TrailTile"}</Link>
                     <NavTab navTabTitle="Login" linkRef="/login"/>
                     <NavTab navTabTitle="About" linkRef="/about"/>
                 </ul>

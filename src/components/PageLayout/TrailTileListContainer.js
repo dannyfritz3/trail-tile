@@ -11,7 +11,8 @@ class TrailTileListContainer extends React.Component{
     }
 
     componentWillMount() {
-        axios.get('http://localhost:4000/trails').then((response) => {
+        axios.get('https://api.morcmtb.org/v1/trails').then((response) => {
+            debugger;
             if (response.status >= 400) {
                 throw new Error("Bad response from server");
             };
