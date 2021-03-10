@@ -10,6 +10,7 @@ import axios from 'axios';
 
 class TrailTile extends React.Component {
     constructor(props) {
+        debugger;
         super(props);
         this.state = {
             posts: [],
@@ -37,6 +38,7 @@ class TrailTile extends React.Component {
     }
 
     render(props) {
+        debugger;
         const clickTrailTile = async (event) => {
             var el = event.currentTarget;
             if (!el.classList.contains("active-tile")) {
@@ -51,7 +53,7 @@ class TrailTile extends React.Component {
         };
 
         const getWeatherData = async () => {
-            var location = `${this.props.location}, MN`;
+            var location = `${this.props.trail.city}, ${this.props.trail.state}`;
             await axios.get("http://localhost:4000/getWeatherData/" + location).then((response) => {
                 this.setState({
                     forecastTemps: response.data.forecastedWeatherData, 
@@ -105,12 +107,12 @@ class TrailTile extends React.Component {
         return (
             <div style={this.state.windowWidth < 600 ? {transform: 'scale(0.75)'} : {transform: 'scale(1)'}} className="trail-tile inactive-tile" onClick={(e) => clickTrailTile(e)}>
                 <div className="trail-tile-header">
-                    <TrailTitle trailName={this.props.name} trailLocation={this.props.location} reimtbX={this.props.reimtbX} reimtbY={this.props.reimtbY} changeMapHandler={this.props.changeMapEvent} />
-                    <TrailCondition trailCondition={this.props.condition === "Melting Do Not Ride" ? "Melting" : this.props.condition} trailTimestamp={this.props.parsedTimestamp} />
+                    <TrailTitle trailName={this.props.trail.trailName} trailLocation={this.props.trail.city} reimtbX={this.props.reimtbX} reimtbY={this.props.reimtbY} changeMapHandler={this.props.changeMapEvent} />
+                    <TrailCondition trailCondition={this.props.trail.trailStatus === "Melting Do Not Ride" ? "Melting" : this.props.trail.trailStatus} trailTimestamp={this.props.trail.updatedAt} />
                 </div>
                 <div onClick={(event) => {event.stopPropagation()}}>
                     <TrailWeatherOutlook weatherOutlookComponentArray={this.state.weatherOutlookComponentArray} liveWeatherData={this.state.liveWeatherData} />
-                    <TrailOtherInfo trailComments={this.props.comments} trailAuthor={this.props.username} trailRid={this.props.trailforksMapId} trailId={this.props.trail_id} bulletinPosts={this.state.componentArray} />
+                    <TrailOtherInfo trailComments={this.props.trail.description} trailAuthor={this.props.username} trailRid={this.props.trailforksMapId} trailId={this.props.trail_id} bulletinPosts={this.state.componentArray} />
                 </div>
             </div>
         );
