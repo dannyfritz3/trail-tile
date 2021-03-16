@@ -52,7 +52,7 @@ class TrailTile extends React.Component {
 
         const getWeatherData = async () => {
             var location = `${this.props.trail.city}, ${this.props.trail.state}`;
-            await axios.get(`http://localhost:4000/getWeatherDataByCoordinates/${this.props.trail.longitude}/${this.props.trail.latitude}`).then((response) => {
+            await axios.get(`http://trail-tile-api-dev.us-east-1.elasticbeanstalk.com/getWeatherDataByCoordinates/${this.props.trail.longitude}/${this.props.trail.latitude}`).then((response) => {
                 this.setState({
                     forecastTemps: response.data.forecastedWeatherData, 
                     liveWeatherData: response.data.liveWeatherData
@@ -80,7 +80,7 @@ class TrailTile extends React.Component {
 
         const getBulletinMessages = () => {
             var posts = [];
-            axios.get("http://localhost:4000/getBulletinBoard/" + this.props.trail_id).then((response) => {
+            axios.get("http://trail-tile-api-dev.us-east-1.elasticbeanstalk.com/getBulletinBoard/" + this.props.trail_id).then((response) => {
                 this.setState({
                     posts: response.data
                 });
