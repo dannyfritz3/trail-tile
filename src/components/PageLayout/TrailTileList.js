@@ -5,7 +5,6 @@ const axios = require('axios');
 class TrailTileList extends React.Component {
 	
 	constructor(props) {
-		debugger;
 		super(props);
 		this.state = {
 			trails: []
@@ -33,7 +32,6 @@ class TrailTileList extends React.Component {
     
             document.getElementById("map").src = mapSrc;
         };
-		debugger;
 		return (
 			<div>
 				{this.state.trails.map( (trail) =>

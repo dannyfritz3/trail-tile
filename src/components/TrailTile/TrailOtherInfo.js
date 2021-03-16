@@ -5,7 +5,7 @@ class TrailOtherInfo extends React.Component {
     render(props) {
         return (
             <div className="other-info">
-                <TrailBullitenBoard trailAuthor={this.props.trailAuthor} trailComments={this.props.trailComments} trailId={this.props.trailId} bulletinPosts={this.props.bulletinPosts} />
+                <TrailBullitenBoard trailAuthor={this.props.trailAuthor} trailComments={this.props.trailComments} updatedAt={this.props.updatedAt} trailId={this.props.trailId} bulletinPosts={this.props.bulletinPosts} />
             </div>
         )
     }

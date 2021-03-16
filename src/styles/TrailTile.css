@@ -138,7 +138,6 @@
 }
 
 .outlook {
-  height: 100%;
   display: inline-block;
   width: 85px;
   text-align: center;
@@ -164,10 +163,14 @@
 }
 
 .weather-outlook-div {
-  overflow: hidden;
   height: 100px;
-  display: block;
   border-bottom: 3px #1E2019 solid;
+  display: inline-block;
+}
+
+.trail-weather-other-data {
+  display: inline-block;
+  overflow: hidden;
 }
 
 .today {

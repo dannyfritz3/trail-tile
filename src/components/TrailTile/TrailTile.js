@@ -10,7 +10,6 @@ import axios from 'axios';
 
 class TrailTile extends React.Component {
     constructor(props) {
-        debugger;
         super(props);
         this.state = {
             posts: [],
@@ -38,7 +37,6 @@ class TrailTile extends React.Component {
     }
 
     render(props) {
-        debugger;
         const clickTrailTile = async (event) => {
             var el = event.currentTarget;
             if (!el.classList.contains("active-tile")) {
@@ -54,7 +52,7 @@ class TrailTile extends React.Component {
 
         const getWeatherData = async () => {
             var location = `${this.props.trail.city}, ${this.props.trail.state}`;
-            await axios.get("http://localhost:4000/getWeatherData/" + location).then((response) => {
+            await axios.get(`http://localhost:4000/getWeatherDataByCoordinates/${this.props.trail.longitude}/${this.props.trail.latitude}`).then((response) => {
                 this.setState({
                     forecastTemps: response.data.forecastedWeatherData, 
                     liveWeatherData: response.data.liveWeatherData
@@ -112,7 +110,7 @@ class TrailTile extends React.Component {
                 </div>
                 <div onClick={(event) => {event.stopPropagation()}}>
                     <TrailWeatherOutlook weatherOutlookComponentArray={this.state.weatherOutlookComponentArray} liveWeatherData={this.state.liveWeatherData} />
-                    <TrailOtherInfo trailComments={this.props.trail.description} trailAuthor={this.props.username} trailRid={this.props.trailforksMapId} trailId={this.props.trail_id} bulletinPosts={this.state.componentArray} />
+                    <TrailOtherInfo trailComments={this.props.trail.description} updatedAt={this.props.trail.updatedAt} trailAuthor={this.props.username} trailRid={this.props.trailforksMapId} trailId={this.props.trail_id} bulletinPosts={this.state.componentArray} />
                 </div>
             </div>
         );
