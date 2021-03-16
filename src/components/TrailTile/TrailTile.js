@@ -51,13 +51,18 @@ class TrailTile extends React.Component {
         };
 
         const getWeatherData = async () => {
-            var location = `${this.props.trail.city}, ${this.props.trail.state}`;
-            await axios.get(`https://trail-tile-api-dev2.us-east-1.elasticbeanstalk.com/getWeatherDataByCoordinates?lat=${this.props.trail.latitude}&lon=${this.props.trail.longitude}`).then((response) => {
+            const climacellKey = '1OwEaPcEHqfKpUTeHZUfMOyK3nyz3PcY';
+            var fieldsArray = ["temp", "weather_code", "wind_speed", "wind_direction", "precipitation"];
+            debugger;
+            await axios.get(`https://api.climacell.co/v3/weather/realtime?apikey=${climacellKey}&lat=${this.props.trail.latitude}&lon=${this.props.trail.longitude}&fields=${fieldsArray}&unit_system=us`).then((response) => {
                 this.setState({
-                    forecastTemps: response.data.forecastedWeatherData, 
-                    liveWeatherData: response.data.liveWeatherData
-                        // windspeed: response.data[0].wsps, 
-                        // cloudcover: response.data[0].cloudcover
+                    liveWeatherData: response.data
+                });
+            });
+
+            await axios.get(`https://api.climacell.co/v3/weather/forecast/daily?apikey=${climacellKey}&lat=${this.props.trail.latitude}&lon=${this.props.trail.longitude}&fields=${fieldsArray}&unit_system=us`).then((response) => {
+                this.setState({
+                    forecastTemps: response.data.slice(0,5)
                 });
                 populateWeatherOutlookArray(this.state.forecastTemps);
             });
@@ -80,7 +85,7 @@ class TrailTile extends React.Component {
 
         const getBulletinMessages = () => {
             var posts = [];
-            axios.get("http://trail-tile-api-dev.us-east-1.elasticbeanstalk.com/getBulletinBoard/" + this.props.trail_id).then((response) => {
+            axios.get("http://localhost:4000/getBulletinBoard/" + this.props.trail_id).then((response) => {
                 this.setState({
                     posts: response.data
                 });
