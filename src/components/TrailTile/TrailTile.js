@@ -92,12 +92,6 @@ class TrailTile extends React.Component {
             //     posts = response.data
             //     poplulateMessagesComponentArray(posts);
             // });
-
-            let response = getBulletinBoardByTrailId(this.props.trail.trailId);
-            this.setState({
-                posts: response
-            });
-            poplulateMessagesComponentArray(this.state.posts);
         };
 
         const poplulateMessagesComponentArray = (posts) => {
