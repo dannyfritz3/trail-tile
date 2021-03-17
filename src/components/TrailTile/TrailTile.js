@@ -7,6 +7,7 @@ import BullitenPost from './BulletinBoard/BullitenPost'
 import TrailWeatherOutlook from './TrailWeather/TrailWeatherOutlook';
 import TrailWeatherOutlookDay from './TrailWeather/TrailWeatherOutlookDay';
 import axios from 'axios';
+import {getBulletinBoardByTrailId} from '../../services/BulletinBoardService';
 
 class TrailTile extends React.Component {
     constructor(props) {
@@ -84,14 +85,20 @@ class TrailTile extends React.Component {
         };
 
         const getBulletinMessages = () => {
-            var posts = [];
-            axios.get("http://localhost:4000/getBulletinBoard/" + this.props.trail_id).then((response) => {
-                this.setState({
-                    posts: response.data
-                });
-                posts = response.data
-                poplulateMessagesComponentArray(posts);
+            // var posts = [];
+            // axios.get("http://localhost:4000/getBulletinBoard/" + this.props.trail_id).then((response) => {
+            //     this.setState({
+            //         posts: response.data
+            //     });
+            //     posts = response.data
+            //     poplulateMessagesComponentArray(posts);
+            // });
+
+            let response = getBulletinBoardByTrailId(this.props.trail.trailId);
+            this.setState({
+                posts: response
             });
+            poplulateMessagesComponentArray(this.state.posts);
         };
 
         const poplulateMessagesComponentArray = (posts) => {
