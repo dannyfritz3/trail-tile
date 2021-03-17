@@ -7,7 +7,6 @@ import BullitenPost from './BulletinBoard/BullitenPost'
 import TrailWeatherOutlook from './TrailWeather/TrailWeatherOutlook';
 import TrailWeatherOutlookDay from './TrailWeather/TrailWeatherOutlookDay';
 import axios from 'axios';
-import {getBulletinBoardByTrailId} from '../../services/BulletinBoardService';
 
 class TrailTile extends React.Component {
     constructor(props) {
