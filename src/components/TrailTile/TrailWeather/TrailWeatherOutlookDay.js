@@ -32,7 +32,6 @@ class TrailWeatherOutlookDay extends React.Component {
                 default: returnSrc = require('../../../resource/Icons/WeatherIcons/icons8-moon-and-stars-100.png'); break;
             }
             return returnSrc;
-            // "https://www.shareicon.net/data/128x128/2016/10/29/848790_weather_512x512.png"
         };
 
         return (
