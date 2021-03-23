@@ -84,14 +84,14 @@ class TrailTile extends React.Component {
         };
 
         const getBulletinMessages = () => {
-            // var posts = [];
-            // axios.get("http://localhost:4000/getBulletinBoard/" + this.props.trail_id).then((response) => {
-            //     this.setState({
-            //         posts: response.data
-            //     });
-            //     posts = response.data
-            //     poplulateMessagesComponentArray(posts);
-            // });
+            var posts = [];
+            axios.get("https://7jc3ap7jwf.execute-api.us-east-2.amazonaws.com/dev/bulletinboard?trailId=" + this.props.trail.trailId).then((response) => {
+                this.setState({
+                    posts: response.data
+                });
+                posts = response.data
+                poplulateMessagesComponentArray(posts);
+            });
         };
 
         const poplulateMessagesComponentArray = (posts) => {
@@ -115,7 +115,7 @@ class TrailTile extends React.Component {
                 </div>
                 <div onClick={(event) => {event.stopPropagation()}}>
                     <TrailWeatherOutlook weatherOutlookComponentArray={this.state.weatherOutlookComponentArray} liveWeatherData={this.state.liveWeatherData} />
-                    <TrailOtherInfo trailComments={this.props.trail.description} updatedAt={this.props.trail.updatedAt} trailAuthor={this.props.username} trailRid={this.props.trailforksMapId} trailId={this.props.trail_id} bulletinPosts={this.state.componentArray} />
+                    <TrailOtherInfo trailComments={this.props.trail.description} updatedAt={this.props.trail.updatedAt} trailAuthor={this.props.username} trailRid={this.props.trailforksMapId} trailId={this.props.trail.trailId} bulletinPosts={this.state.componentArray} />
                 </div>
             </div>
         );

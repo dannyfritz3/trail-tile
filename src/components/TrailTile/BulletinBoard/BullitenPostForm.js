@@ -26,10 +26,11 @@ class BullitenPostForm extends React.Component {
             this.setState({inputMessage: event.target.value})
         };
     
-        const formSubmitHandler = (event) => {
+        const formSubmitHandler = async (event) => {
             event.preventDefault();
     
             if(handleValidation()) {
+                debugger;
                 //bullitenPostRequest[username, timestamp, postMessage]
                 var bullitenPostRequest = [
                     "user1",
@@ -37,7 +38,7 @@ class BullitenPostForm extends React.Component {
                     this.state.inputMessage
                 ];
                 
-                axios.post('http://trail-tile-api-dev.us-east-1.elasticbeanstalk.com//postBulletinMessage/' + this.state.trailId, bullitenPostRequest);
+                await axios.post("https://7jc3ap7jwf.execute-api.us-east-2.amazonaws.com/dev/bulletinboard?trailId=" + this.state.trailId, bullitenPostRequest);
                 this.setState({inputMessage: ""});
                 this.props.updateClientBulletinBoard(bullitenPostRequest);
             }
