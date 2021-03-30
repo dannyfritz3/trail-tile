@@ -38,7 +38,7 @@ class BullitenPostForm extends React.Component {
                     this.state.inputMessage
                 ];
                 
-                await axios.post("https://7jc3ap7jwf.execute-api.us-east-2.amazonaws.com/dev/bulletinboard?trailId=" + this.state.trailId, bullitenPostRequest);
+                await axios.post("https://7jc3ap7jwf.execute-api.us-east-2.amazonaws.com/dev/bulletinboard?trailId=" + this.state.trailId, JSON.stringify(bullitenPostRequest));
                 this.setState({inputMessage: ""});
                 this.props.updateClientBulletinBoard(bullitenPostRequest);
             }
