@@ -1,3 +1,71 @@
+export const mapCoordinates = {
+    "Battle Creek": {
+        "reimtbX": "-10354896",
+        "reimtbY": "5611554"
+    },
+    "Bertram Chain of Lakes": {
+        "reimtbX": "-10446610",
+        "reimtbY": "5667854",
+    },
+    "Carver Lake Park": {
+        "reimtbX": "-10350542",
+        "reimtbY": "5606186"
+    },
+    "Cottage Grove Bike Park": {
+        "reimtbX": "-10349262",
+        "reimtbY": "5597117"
+    },
+    "Elm Creek": {
+        "reimtbX": "-10398850",
+        "reimtbY": "5648661"
+    },
+    "Hillside Park": {
+        "reimtbX": "-10412804",
+        "reimtbY": "5668317"
+    },
+    "Lake Rebecca": {
+        "reimtbX": "-10436070",
+        "reimtbY": "5631256"
+    },
+    "Lebanon Hills": {
+        "reimtbX": "-10374662",
+        "reimtbY": "5586981"
+    },
+    "Lone Lake Park": {
+        "reimtbX": "-10400501",
+        "reimtbY": "5605454"
+    },
+    "Minnesota River Trail": {
+        "reimtbX": "-10381834",
+        "reimtbY": "5592584"
+    },
+    "Monarch Singletrack": {
+        "reimtbX": "-10430561",
+        "reimtbY": "5602252"
+    },
+    "Murphy Hanrehan": {
+        "reimtbX": "-10390997",
+        "reimtbY": "5577444"
+    },
+    "Salem Hills": {
+        "reimtbX": "-10360948",
+        "reimtbY": "5599802"
+    },
+    "Sunfish Lake Park": {
+        "reimtbX": "-10343323",
+        "reimtbY": "5618807"
+    },
+    "Terrace Oaks": {
+        "reimtbX": "-10379469",
+        "reimtbY": "5585379"
+    },
+    "Theodore Wirth": {
+        "reimtbX": "-10389802",
+        "reimtbY": "5618312"
+    }
+};
+
+
 export const parseWeatherDate = (timestamp) => {
     var timestamp_split = timestamp.value.split('-');
     var month = parseInt(timestamp_split[1]);
