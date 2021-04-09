@@ -53,7 +53,7 @@ class TrailTile extends React.Component {
         const getWeatherData = async () => {
             const climacellKey = '1OwEaPcEHqfKpUTeHZUfMOyK3nyz3PcY';
             var fieldsArray = ["temp", "weather_code", "wind_speed", "wind_direction", "precipitation"];
-            debugger;
+
             await axios.get(`https://api.climacell.co/v3/weather/realtime?apikey=${climacellKey}&lat=${this.props.trail.latitude}&lon=${this.props.trail.longitude}&fields=${fieldsArray}&unit_system=us`).then((response) => {
                 this.setState({
                     liveWeatherData: response.data

@@ -36,13 +36,10 @@ class App extends React.Component {
             windowWidth: windowWidth,
             windowHeight: windowHeight
         });
-
-        console.log("Window Width: " + this.state.windowWidth + "\nWindow Height: " + this.state.windowHeight);
     }
 
     render() {
         let showMap = this.state.windowWidth > 1024;
-        console.log(showMap);
         
         return(
             <div id="page-container">

@@ -27,8 +27,8 @@ class TrailWeatherOutlook extends React.Component {
 
     render(props) {
         return (
-            <div class="weather-div">
-                <div class="weather-outlook-div">
+            <div className="weather-div">
+                <div className="weather-outlook-div">
                     <div style={{display: "inline-block", height: "100%"}}>
                         {this.props.weatherOutlookComponentArray}
                     </div>

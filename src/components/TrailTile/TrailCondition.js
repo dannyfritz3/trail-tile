@@ -9,6 +9,7 @@ class TrailCondition extends React.Component {
     determineConditionSquareColor(condition) {
         switch (condition) {
             case ("Dry"): return "#558B6E";
+            case ("Open"):return "#558B6E"
             case ("Tacky"): return "#558B6E";
             case ("Fat Tires"): return "#0B4F6C";
             case ("Packed"): return "#0EB1D2";
@@ -29,8 +30,6 @@ class TrailCondition extends React.Component {
         let timestamp_month = parseInt(dateArray[1]);
 
         let today = new Date();
-
-        debugger;
 
         if(today.getFullYear() - timestamp_year === 0) {
             if(today.getMonth() + 1 === timestamp_month) {
@@ -57,7 +56,6 @@ class TrailCondition extends React.Component {
     }
 
     render(props) {
-        console.log(this.getLastUpdated(this.props.trailTimestamp));
         return (
             <div className="condition-div">
                 <div className="condition-square" style={{ backgroundColor: this.determineConditionSquareColor(this.props.trailCondition) }}></div>

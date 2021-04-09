@@ -35,7 +35,7 @@ class TrailTileList extends React.Component {
 		return (
 			<div>
 				{this.state.trails.map( (trail) =>
-					<TrailTile key={new Date()} windowWidth={this.props.windowWidth} windowHeight={this.props.windowHeight} changeMapEvent={changeMapEvent} trail={trail} />
+					<TrailTile key={trail.trailId} windowWidth={this.props.windowWidth} windowHeight={this.props.windowHeight} changeMapEvent={changeMapEvent} trail={trail} />
 				)}
 			</div>
 		);

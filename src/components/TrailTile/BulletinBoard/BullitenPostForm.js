@@ -30,7 +30,6 @@ class BullitenPostForm extends React.Component {
             event.preventDefault();
     
             if(handleValidation()) {
-                debugger;
                 //bullitenPostRequest[username, timestamp, postMessage]
                 var bullitenPostRequest = [
                     "user1",
