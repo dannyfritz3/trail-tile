@@ -75,8 +75,14 @@ class TrailTile extends React.Component {
                 var forecastHigh = parseInt(forecastTemps[i].temp[1].max.value);
                 var forecastLow = parseInt(forecastTemps[i].temp[0].min.value);
                 var weatherCode = forecastTemps[i].weather_code.value;
-                arr.push(<TrailWeatherOutlookDay weatherDay={forecastDay} forecastHigh={forecastHigh}
-                    forecastLow={forecastLow} weatherCode={weatherCode} isToday={i === 0} />);
+                arr.push(
+                //refactor this so that it doesn't have to be passed down to the weather component as a full component.
+                //instead pass the raw data and fill in fixed locations for each day of weather displayed.
+                //since the amount of days displayed is fixed, there is no need to build an array
+                    <TrailWeatherOutlookDay weatherDay={forecastDay} forecastHigh={forecastHigh}
+                        forecastLow={forecastLow} weatherCode={weatherCode} isToday={i === 0} />
+                    
+                );
             }
             this.setState({
                 weatherOutlookComponentArray: arr
